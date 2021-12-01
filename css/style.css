@@ -38,3 +38,14 @@
 .footer {
     background-color:#c7a15b ;
 }
+
+.imagen-tienda{
+    height: 300px;
+    width: 60%;
+
+}
+
+.boton-comprar{
+    background-color: #c7a15b;
+    
+}
