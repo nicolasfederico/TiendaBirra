@@ -1,0 +1,46 @@
+
+{
+"status": "OK",
+    "productos": [
+        {
+            "producto": "Ipa",
+            "precio": 300,
+            "cantidad": 100,
+            "graduacionalc": "8%",
+            "ibu": 50,
+            "color": "ebc, srm",
+            "maltas": "pale ale, munich",
+            "lupulos": "columbus, simcoe"
+        },
+        {
+            "producto": "Ipa",
+            "precio": 300,
+            "cantidad": 100,
+            "graduacionalc": "8%",
+            "ibu": 50,
+            "color": "ebc, srm",
+            "maltas": "pale ale, munich",
+            "lupulos": "columbus, simcoe"
+        },
+        {
+            "producto": "Ipa",
+            "precio": 300,
+            "cantidad": 100,
+            "graduacionalc": "8%",
+            "ibu": 50,
+            "color": "ebc, srm",
+            "maltas": "pale ale, munich",
+            "lupulos": "columbus, simcoe"
+        },
+        {
+            "producto": "Ipa",
+            "precio": 300,
+            "cantidad": 100,
+            "graduacionalc": "8%",
+            "ibu": 50,
+            "color": "ebc, srm",
+            "maltas": "pale ale, munich",
+            "lupulos": "columbus, simcoe"
+        }
+    ]
+}
