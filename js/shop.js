@@ -16,14 +16,11 @@ async function load() {
                 <div class="card h-100">
                   <img src="../img/02.jpg" class="card-img-top  imagen-tienda" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title"> "Nombre:"${productos[i].producto}</h5>
-                    <p class="card-text">${productos[i].precio}</p>
-                    <p class="card-text">${productos[i].cantidad}</p>
-                    <p class="card-text">${productos[i].graduacionalc}</p>
-                    <p class="card-text">${productos[i].ibu}</p>
-                    <p class="card-text">${productos[i].color}</p>
-                    <p class="card-text">${productos[i].maltas}</p>
-                    <p class="card-text">${productos[i].lupulos}</p>
+                    <h5 class="card-title"> Nombre: ${productos[i].producto}</h5>
+                    <p class="card-text"> $: ${productos[i].precio}</p>
+                    <p class="card-text"> %alcohol: ${productos[i].graduacionalc}</p>
+                    <p class="card-text"> ibu: ${productos[i].ibu}</p>
+                    <p class="card-text"> color: ${productos[i].color}</p>
                     </div>
                     </div>
                   </div>`
