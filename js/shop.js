@@ -12,18 +12,20 @@ async function load() {
             productos = t.productos;
             container.innerHTML = "";
             for (let i=0; i<productos.length; i++){
-               container.innerHTML+= `<div class="col">
-                <div class="card h-100">
-                  <img src="../img/02.jpg" class="card-img-top  imagen-tienda" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title"> Nombre: ${productos[i].producto}</h5>
-                    <p class="card-text"> $: ${productos[i].precio}</p>
-                    <p class="card-text"> %alcohol: ${productos[i].graduacionalc}</p>
-                    <p class="card-text"> ibu: ${productos[i].ibu}</p>
-                    <p class="card-text"> color: ${productos[i].color}</p>
+               container.innerHTML+= `
+               <div class="col">
+                    <div class="card h-100">
+                        <img src="../img/02.jpg" class="card-img-top  imagen-tienda" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"> Nombre: ${productos[i].producto}</h5>
+                            <p class="card-text"> $${productos[i].precio}</p>
+                            <p class="card-text"> %alcohol: ${productos[i].graduacionalc}</p>
+                            <p class="card-text"> ibu: ${productos[i].ibu}</p>
+                            <p class="card-text"> color: ${productos[i].color}</p>
+                        </div>
+                        <button class="btn-conseguila" id="btn-agregar">Agregar</button>
                     </div>
-                    </div>
-                  </div>`
+                </div>`
             }
         }
         else

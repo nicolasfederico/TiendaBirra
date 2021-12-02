@@ -2,14 +2,29 @@
     width: 10%;
 }
 .nav-background {
-    background-image: url('../img/01.jpg');
-    height: 500px;
-    background-repeat: no-repeat;
+background-color: #6f564a;
 }
 
 .boton{
-    background-color:#6f564a;
+    background-color:#c7a15b;
     margin: 2%;
+    height: 60px;
+    width: 20%;
+    color: white;
+    font-size: 20px;
+}
+
+.boton:hover{
+    background-color:white;
+    margin: 2%;
+    height: 60px;
+    width: 20%;
+    color: #c7a15b;
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
 }
 
 .contenedor {
@@ -17,7 +32,9 @@
 }
 
 .contenedor-botones {
-    background-color: #c7a15b;
+    background-image: url('../img/01.jpg');
+    width: 100%;
+    height: 300px;    
 }
 
 .imagen-contenedor {
@@ -33,6 +50,19 @@
 .btn-conseguila {
     height: 50px;
     align-items: center;
+    background-color:#6f564a;
+    margin: 2%;
+    height: 60px;
+    width: 20%;
+    color: white;
+}
+
+.btn-conseguila:hover{
+    background-color:#c7a15b;
+    margin: 2%;
+    height: 60px;
+    width: 20%;
+    color: white;
 }
 
 .footer {
@@ -47,5 +77,9 @@
 
 .boton-comprar{
     background-color: #c7a15b;
+    
+}
+
+.btn-agregar{
     
 }
