@@ -3,44 +3,32 @@
 "status": "OK",
     "productos": [
         {
-            "producto": "Ipa",
+            "producto": "Baum Old Ale",
             "precio": 300,
-            "cantidad": 100,
-            "graduacionalc": "8%",
-            "ibu": 50,
-            "color": "ebc, srm",
-            "maltas": "pale ale, munich",
-            "lupulos": "columbus, simcoe"
+            "graduacionalc": "8",
+            "ibu": 27,
+            "color": "roja"
         },
         {
-            "producto": "Ipa",
-            "precio": 300,
-            "cantidad": 100,
-            "graduacionalc": "8%",
-            "ibu": 50,
-            "color": "ebc, srm",
-            "maltas": "pale ale, munich",
-            "lupulos": "columbus, simcoe"
+            "producto": "Baum Blonde",
+            "precio": 250,
+            "graduacionalc": "5",
+            "ibu":18,
+            "color": "Rubia"
         },
         {
-            "producto": "Ipa",
-            "precio": 300,
-            "cantidad": 100,
-            "graduacionalc": "8%",
+            "producto": "Blest Hop Shot Ipa",
+            "precio": 270,
+            "graduacionalc": "6.5",
             "ibu": 50,
-            "color": "ebc, srm",
-            "maltas": "pale ale, munich",
-            "lupulos": "columbus, simcoe"
+            "color": "roja"
         },
         {
-            "producto": "Ipa",
-            "precio": 300,
-            "cantidad": 100,
-            "graduacionalc": "8%",
-            "ibu": 50,
-            "color": "ebc, srm",
-            "maltas": "pale ale, munich",
-            "lupulos": "columbus, simcoe"
+            "producto": "Brewhouse Monsieur Chocolat",
+            "precio": 460,
+            "graduacionalc": "7.0",
+            "ibu": 35,
+            "color": "Negra"
         }
     ]
 }
