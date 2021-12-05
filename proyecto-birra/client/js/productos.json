@@ -1,0 +1,34 @@
+
+{
+"status": "OK",
+    "productos": [
+        {
+            "producto": "Baum Old Ale",
+            "precio": 300,
+            "graduacionalc": "8",
+            "ibu": 27,
+            "color": "roja"
+        },
+        {
+            "producto": "Baum Blonde",
+            "precio": 250,
+            "graduacionalc": "5",
+            "ibu":18,
+            "color": "Rubia"
+        },
+        {
+            "producto": "Blest Hop Shot Ipa",
+            "precio": 270,
+            "graduacionalc": "6.5",
+            "ibu": 50,
+            "color": "roja"
+        },
+        {
+            "producto": "Brewhouse Monsieur Chocolat",
+            "precio": 460,
+            "graduacionalc": "7.0",
+            "ibu": 35,
+            "color": "Negra"
+        }
+    ]
+}
