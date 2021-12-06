@@ -9,16 +9,17 @@
     <title>Proyecto CFL</title>
 </head>
 <body>
-    <div class="nav-background">    <!--Nico este div no se si seguira siendo necesario, solo le saque la IMG de fondo y le puse color para hacer lo de la portada -->
-        <nav class="navbar navbar-expand-lg navbar-dark ">
+
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"> <img src="img/logo.svg" class="logo-navbar"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav" >
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <div class="mx-auto"></div>
+                    <div class="navbar-nav" >                      
+                        <a class="nav-link active" aria-current="page" href="./">Home</a>
                         <a class="nav-link" href="tienda.html">Tienda</a>
                         <a class="nav-link" href="#">Contacto</a>
                         <div class="nav-link d-flex " href="linkcarrito">
@@ -32,9 +33,10 @@
                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                             </svg>
                         </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         </nav>
     </div>
     <div class="d-flex justify-content-center align-items-center contenedor-botones">
@@ -42,10 +44,10 @@
         <button type="button" class="btn boton" id="btn-juego">JUGÁ POR PREMIOS</button>
     </div>
     <div class="contenedor d-flex justify-content-center">
-        <img class="imagen-contenedor"src="img/02.jpg" alt="">
+        <img class="imagen-contenedor"src="../img/tienda/SemiSerA.jpg" alt="">
         <div class="texto-contenedor">
             <h2>La elegida del mes</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto alias quae repellat eos quod reprehenderit dolore unde neque quam fugit in modi aperiam recusandae reiciendis aspernatur, et explicabo amet quia!</p>
+            <p>Cerveza tostada de trigo de estilo Weizenbock. Nuestra versión toma el nombre de las serranas que aparecen en el Libro del buen amor -a las que el Arcipreste de Hita llamaba Semi-ser-a por su fuerza y astucia- y rinde homenaje al trabajo de la mujer rural. </p>
         </div>
         
             <button type="button" class="btn btn-conseguila" id="btn-conseguila">CONSEGUILA</button>
@@ -92,6 +94,7 @@
         </div>
           <!-- Copyright -->
       </footer>
+    <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

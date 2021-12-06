@@ -3,32 +3,86 @@
 "status": "OK",
     "productos": [
         {
-            "producto": "Baum Old Ale",
+            "imgSrc": "../img/tienda/segovilla.jpg",
+            "detalle": "AMERICAN AMBER ALE",
+            "producto": "SEGOVILLA",
             "precio": 300,
-            "graduacionalc": "8",
-            "ibu": 27,
-            "color": "roja"
+            "alcohol": "5,6",
+            "EBC":23,
+            "ibu": 35
         },
         {
-            "producto": "Baum Blonde",
+            "imgSrc": "../img/tienda/laMala.jpg",
+            "detalle": "RUBIA LAGER",
+            "producto": "LA MALA",
             "precio": 250,
-            "graduacionalc": "5",
-            "ibu":18,
-            "color": "Rubia"
+            "alcohol": "4,5",
+            "ibu":12,
+            "EBC":8
         },
         {
-            "producto": "Blest Hop Shot Ipa",
-            "precio": 270,
-            "graduacionalc": "6.5",
-            "ibu": 50,
-            "color": "roja"
+            "imgSrc": "../img/tienda/km100.jpg",
+            "detalle": "INDIA PALE ALE",
+            "producto": "KM. 100",
+            "precio": 250,
+            "alcohol": "5,5",
+            "ibu":38,
+            "EBC":25
         },
         {
-            "producto": "Brewhouse Monsieur Chocolat",
-            "precio": 460,
-            "graduacionalc": "7.0",
-            "ibu": 35,
-            "color": "Negra"
+            "imgSrc": "../img/tienda/juanelasSinGluten.jpg",
+            "detalle": "FINEST GOLDEN ALE",
+            "producto": "JUANELAS sin gluten",
+            "precio": 250,
+            "alcohol": "6",
+            "ibu":"18,5",
+            "EBC":12
+        },
+        {
+            "imgSrc": "../img/tienda/sanBenito.jpg",
+            "detalle": "HOPPY RYE SAISON",
+            "producto": "SAN BENITO",
+            "precio": 250,
+            "alcohol": "5,5",
+            "ibu":"16,2",
+            "EBC":14
+        },
+        {
+            "imgSrc": "../img/tienda/SemiSerA.jpg",
+            "detalle": "WEIZENBOCK",
+            "producto": "SemiSerA",
+            "precio": 250,
+            "alcohol": "5",
+            "ibu":"30",
+            "EBC":46
+        },
+        {
+            "imgSrc": "../img/tienda/zerezo.jpg",
+            "detalle": "WESSBIER TRIGO",
+            "producto": "ZEREZO",
+            "precio": 250,
+            "alcohol": "3",
+            "ibu":"10.7",
+            "EBC":4
+        },
+        {
+            "imgSrc": "../img/tienda/cayetana.jpg",
+            "detalle": "INDIA PALE LAGER - EDICIÓN LIMITADA",
+            "producto": "CAYETANA",
+            "precio": 250,
+            "alcohol": "4.5",
+            "ibu":"42.5",
+            "EBC":20
+        }
+        ,
+        {
+            "imgSrc": "../img/tienda/almaNegra.jpg",
+            "detalle": "CAYENA LONDON PORTER",
+            "producto": "ALMA NEGRA",
+            "precio": 250,
+            "alcohol": "5.5",
+            "ibu":"33",
+            "EBC":46
         }
     ]
 }

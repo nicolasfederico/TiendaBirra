@@ -15,15 +15,16 @@ async function load() {
                container.innerHTML+= `
                <div class="col">
                     <div class="card h-100">
-                        <img src="../img/02.jpg" class="card-img-top  imagen-tienda" alt="...">
+                        <img src="${productos[i].imgSrc}" class="card-img-top  imagen-tienda" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"> Nombre: ${productos[i].producto}</h5>
-                            <p class="card-text"> $${productos[i].precio}</p>
-                            <p class="card-text"> %alcohol: ${productos[i].graduacionalc}</p>
-                            <p class="card-text"> ibu: ${productos[i].ibu}</p>
-                            <p class="card-text"> color: ${productos[i].color}</p>
+                            <h5 class="card-title"> ${productos[i].producto}</h5>
+                            <p class="card-text"> ${productos[i].detalle}</p>
+                            <p class="card-precio"> $${productos[i].precio}</p>
+                            <p class="card-text"> Alcohol: ${productos[i].alcohol}% -
+                            IBU: ${productos[i].ibu} -
+                            EBC: ${productos[i].EBC}</p>
                         </div>
-                        <button class="btn-conseguila" id="btn-agregar">Agregar</button>
+                        <button class="btn boton-agregar" id="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>`
             }
