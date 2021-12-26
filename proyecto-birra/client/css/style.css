@@ -1,7 +1,8 @@
-@import url('http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;600&display=swap');
+
 
 body {
-    font-family: "Lato";
+    font-family: 'Spartan', sans-serif;
 }
 
 
@@ -119,4 +120,21 @@ background-color: #6f564a;
 .card-precio {
     font-weight: bold;
     color: rgb(124, 190, 24);
+}
+
+.form-control, .btnLogin {
+    min-height: 3.125rem;
+    line-height: initial;
+}
+
+.imgLogin {
+    background-image: url("../img/login/loginImg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.imgLoginLogo {
+    background-image: url("../img/logo.svg");
+    background-size:cover;
+    background-position:left;
+    background-repeat: no-repeat;
 }
