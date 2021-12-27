@@ -13,10 +13,8 @@ async function load() {
             container.innerHTML = "";
             for (let i=0; i<productos.length; i++){
                container.innerHTML+= `
-               <div class="col-lg-3">
-               </div>
-               <div class="col-lg-5">
-                    <div class="card h-100 w-50">
+               <div class="col">
+                    <div class="card h-100">
                         <img src="${productos[i].imgSrc}" class="card-img-top  imagen-tienda" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"> ${productos[i].producto}</h5>
@@ -28,9 +26,7 @@ async function load() {
                         </div>
                         <button class="btn boton-agregar" id="btn-agregar">Agregar al carrito</button>
                     </div>
-                </div>
-                <div class="col-lg-3">
-               </div>`
+                </div>`
             }
         }
         else
