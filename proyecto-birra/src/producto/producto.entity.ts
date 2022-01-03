@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { DetalleFactura } from "src/detalle-factura/detalleFactura.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity('producto')
@@ -27,6 +28,10 @@ export class Producto{
 
     @Column()
     private stock:number;
+
+    @OneToMany(type => DetalleFactura,detalles => detalles.producto)
+    
+    public detalles : DetalleFactura [];
 
 
     constructor(nombre:string,marca:string,precio:number,alcohol:number,ibu:number,color:string,stock:number){

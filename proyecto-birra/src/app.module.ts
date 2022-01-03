@@ -7,6 +7,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FacturaModule } from './factura/factura.module';
 import { ProductoModule } from './producto/producto.module';
+import { DetalleFacturaModule } from './detalle-factura/detalle-factura.module';
 
 
 @Module({
@@ -14,7 +15,7 @@ import { ProductoModule } from './producto/producto.module';
     rootPath: join(__dirname, '..',
     'client'),
     }),
-    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule],
+    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule, DetalleFacturaModule],
   controllers: [AppController],
   providers: [AppService],
 })
