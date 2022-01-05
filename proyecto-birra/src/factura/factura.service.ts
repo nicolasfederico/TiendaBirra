@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CodigoDescuento } from 'src/codigo-descuento/codigoDescuento.entity';
 import Usuario from 'src/usuario/usuario.entity';
 import { Repository } from 'typeorm';
 import { FacturaDTO } from './factura.dto';
@@ -10,13 +11,14 @@ import { Factura } from './factura.entity';
 export class FacturaService {
 
     constructor(@InjectRepository(Factura)private readonly repoFactura: Repository<Factura>,
-                @InjectRepository(Usuario)private readonly repoUsuario: Repository<Usuario>){
+                @InjectRepository(Usuario)private readonly repoUsuario: Repository<Usuario>,
+                ){
 
     }
 
     public async getFacturas(): Promise<Factura[]>{
         try{
-            const facturas : Factura[] = await this.repoFactura.find({relations: ['usuario','detalleFacturas']});
+            const facturas : Factura[] = await this.repoFactura.find({relations: ['usuario','detalleFacturas','codigoDescuento']});
             console.log(facturas);
             return facturas;
             
@@ -27,7 +29,7 @@ export class FacturaService {
 
     public async getFactura(id:number): Promise<Factura>{
         try{
-            const factura : Factura = await this.repoFactura.findOne(id,{relations: ['usuario','detalleFacturas']});
+            const factura : Factura = await this.repoFactura.findOne(id,{relations: ['usuario','detalleFacturas','codigoDescuento']});
             console.log(factura);
             return factura;   
         }catch (error) {

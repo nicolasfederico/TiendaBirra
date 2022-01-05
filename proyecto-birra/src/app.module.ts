@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FacturaModule } from './factura/factura.module';
 import { ProductoModule } from './producto/producto.module';
 import { DetalleFacturaModule } from './detalle-factura/detalle-factura.module';
+import { CodigoDescuentoController } from './codigo-descuento/codigo-descuento.controller';
+import { CodigoDescuentoModule } from './codigo-descuento/codigo-descuento.module';
 
 
 @Module({

@@ -1,4 +1,5 @@
 
+import { CodigoDescuento } from "src/codigo-descuento/codigoDescuento.entity";
 import { DetalleFactura } from "src/detalle-factura/detalleFactura.entity";
 import Usuario from "src/usuario/usuario.entity";
 import { Column, Entity,JoinColumn,ManyToOne,OneToMany,PrimaryGeneratedColumn } from "typeorm";
@@ -21,6 +22,12 @@ import { Column, Entity,JoinColumn,ManyToOne,OneToMany,PrimaryGeneratedColumn } 
         @OneToMany(type => DetalleFactura, detalleFacturas => detalleFacturas.factura)
         public detalleFacturas : DetalleFactura[];
 
+        /*
+        @ManyToOne(type => CodigoDescuento, codigoDescuento => codigoDescuento.factura)
+        @JoinColumn({name :'id_codigo_descuento'})
+        public codigoDescuento: CodigoDescuento;
+        */
+        
         constructor(fecha:Date,total:number,usuario:Usuario){
             this.fecha=fecha;
             this.total=total;
