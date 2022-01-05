@@ -16,7 +16,7 @@ export class FacturaService {
 
     public async getFacturas(): Promise<Factura[]>{
         try{
-            const facturas : Factura[] = await this.repoFactura.find({relations: ['usuario']});
+            const facturas : Factura[] = await this.repoFactura.find({relations: ['usuario','detalleFacturas']});
             console.log(facturas);
             return facturas;
             
@@ -27,7 +27,7 @@ export class FacturaService {
 
     public async getFactura(id:number): Promise<Factura>{
         try{
-            const factura : Factura = await this.repoFactura.findOne(id,{relations: ['usuario']});
+            const factura : Factura = await this.repoFactura.findOne(id,{relations: ['usuario','detalleFacturas']});
             console.log(factura);
             return factura;   
         }catch (error) {

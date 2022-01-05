@@ -1,6 +1,7 @@
 
+import { DetalleFactura } from "src/detalle-factura/detalleFactura.entity";
 import Usuario from "src/usuario/usuario.entity";
-import { Column, Entity,JoinColumn,ManyToOne,PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity,JoinColumn,ManyToOne,OneToMany,PrimaryGeneratedColumn } from "typeorm";
 
     @Entity('factura')
     export  class Factura{
@@ -16,6 +17,9 @@ import { Column, Entity,JoinColumn,ManyToOne,PrimaryGeneratedColumn } from "type
         @ManyToOne(type => Usuario, usuario => usuario.facturas)
         @JoinColumn({name :'id_usuario'})
         public usuario : Usuario;
+
+        @OneToMany(type => DetalleFactura, detalleFacturas => detalleFacturas.factura)
+        public detalleFacturas : DetalleFactura[];
 
         constructor(fecha:Date,total:number,usuario:Usuario){
             this.fecha=fecha;
