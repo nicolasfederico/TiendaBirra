@@ -1,5 +1,5 @@
 export class DetalleFacturaDTO{
-    readonly idProducto:number;
-    readonly idFactura:number;
+    readonly id_producto:number;
+    readonly id_factura:number;
     readonly cantidad:number;
 }

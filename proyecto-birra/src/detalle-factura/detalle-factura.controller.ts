@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { DetalleFacturaService } from './detalle-factura.service';
 import { DetalleFacturaDTO } from './detalleFactura.dto';
 import { DetalleFactura } from './detalleFactura.entity';
@@ -19,8 +19,18 @@ export class DetalleFacturaController {
             return await this.detalleFacturaService.getDetallesFactura(parseInt(id));
         }
 
+        @Get(':id/:producto')
+        public async getDetalleFactura(@Param('id') idFactura:string, @Param('producto') idproducto:string):Promise<DetalleFactura>{
+            return await this.detalleFacturaService.getDetalleFactura(parseInt(idFactura),parseInt(idproducto));
+        }
+
      @Post('')
         public async createDetalleFactura(@Body() detalleFactura : DetalleFacturaDTO) : Promise<DetalleFactura>{
             return await this.detalleFacturaService.createDetalleFactura(detalleFactura);
         }
-}
+
+    @Delete(':id/:producto')
+    public deleteFactura(@Param('id') id:number,@Param('producto') idproducto:number ): Promise<DetalleFactura> {
+        return this.detalleFacturaService.deleteDetalleFactura(id,idproducto);
+    }
+    }
