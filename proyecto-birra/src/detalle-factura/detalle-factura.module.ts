@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CodigoDescuentoService } from 'src/codigo-descuento/codigo-descuento.service';
+import { CodigoDescuento } from 'src/codigo-descuento/codigoDescuento.entity';
 import { FacturaController } from 'src/factura/factura.controller';
 import { Factura } from 'src/factura/factura.entity';
 import { FacturaService } from 'src/factura/factura.service';
