@@ -2,7 +2,7 @@ import { Factura } from "src/factura/factura.entity";
 import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 
-Entity('codigo_descuento')
+@Entity('codigo_descuento')
 export class CodigoDescuento{
 
     @PrimaryColumn()
@@ -11,14 +11,18 @@ export class CodigoDescuento{
     @Column()
     private descuento:number;
 
-    /*
+    @Column()
+    private activo:boolean;
+
+    
     @OneToMany(type => Factura, factura => factura.codigoDescuento)
     public factura : Factura[];
 
-*/
-    constructor(id_codigo_descuento:string,descuento:number){
+
+    constructor(id_codigo_descuento:string,descuento:number,activo:boolean){
         this.id_codigo_descuento=id_codigo_descuento;
         this.descuento=descuento;
+        this.activo=activo;
     }
 
 
@@ -32,6 +36,10 @@ export class CodigoDescuento{
 
     public setDescuento(descuento:number){
         this.descuento = descuento;
+    }
+
+    public setActivo(activo:boolean){
+        this.activo=activo;
     }
 
 }

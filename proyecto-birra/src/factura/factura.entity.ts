@@ -22,11 +22,11 @@ import { Column, Entity,JoinColumn,ManyToOne,OneToMany,PrimaryGeneratedColumn } 
         @OneToMany(type => DetalleFactura, detalleFacturas => detalleFacturas.factura)
         public detalleFacturas : DetalleFactura[];
 
-        /*
+        
         @ManyToOne(type => CodigoDescuento, codigoDescuento => codigoDescuento.factura)
         @JoinColumn({name :'id_codigo_descuento'})
         public codigoDescuento: CodigoDescuento;
-        */
+        
         
         constructor(fecha:Date,total:number,usuario:Usuario){
             this.fecha=fecha;

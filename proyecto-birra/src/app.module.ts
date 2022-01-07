@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FacturaModule } from './factura/factura.module';
 import { ProductoModule } from './producto/producto.module';
 import { DetalleFacturaModule } from './detalle-factura/detalle-factura.module';
-import { CodigoDescuentoController } from './codigo-descuento/codigo-descuento.controller';
+import { CodigoDescuento } from './codigo-descuento/codigoDescuento.entity';
 import { CodigoDescuentoModule } from './codigo-descuento/codigo-descuento.module';
 
 
@@ -17,7 +17,7 @@ import { CodigoDescuentoModule } from './codigo-descuento/codigo-descuento.modul
     rootPath: join(__dirname, '..',
     'client'),
     }),
-    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule, DetalleFacturaModule],
+    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule, DetalleFacturaModule,CodigoDescuentoModule],
   controllers: [AppController],
   providers: [AppService],
 })
