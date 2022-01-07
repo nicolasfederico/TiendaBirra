@@ -16,8 +16,9 @@ export class TriviaService {
 
     public async getTrivias():Promise<Trivia[]>{
         try{
-            const getTrivias : Trivia[] = await this.repoTrivias.find({relations:['id_codigo_descuento']});
-
+            const getTrivias : Trivia[] = await this.repoTrivias.find({relations:['codigoDescuento']});
+            console.log(getTrivias);
+            
             return getTrivias;
         }catch (error) {
             throw new HttpException( { error : `Error buscando las Trivias: ${error}`}, HttpStatus.NOT_FOUND);
@@ -27,7 +28,7 @@ export class TriviaService {
 
     public async getTrivia(id:number):Promise<Trivia>{
         try{
-            const getTrivia : Trivia = await this.repoTrivias.findOne(id);
+            const getTrivia : Trivia = await this.repoTrivias.findOne(id,{relations:['id_codigo_descuento']});
         console.log(getTrivia);
         return getTrivia;
     }catch (error) {
@@ -41,7 +42,7 @@ export class TriviaService {
         try{
             const codigoDescuento : CodigoDescuento = await this.repoCodigoDescuento.findOne(trivia.id_codigo_descuento)
                 if(!codigoDescuento){
-                    throw new HttpException('No se pudo encontrar al cliente', HttpStatus.NOT_FOUND);
+                    throw new HttpException('No se pudo encontrar el codigo de descuento', HttpStatus.NOT_FOUND);
                 }
 
             const newTrivia : Trivia = await this.repoTrivias.save(new Trivia(

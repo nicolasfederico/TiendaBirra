@@ -1,11 +1,11 @@
 import { CodigoDescuento } from "src/codigo-descuento/codigoDescuento.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity('trivia')
 export class Trivia{
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     private id_trivia:number;
 
     @Column()
@@ -15,14 +15,14 @@ export class Trivia{
     private respuesta:boolean;
 
     @OneToOne(type => CodigoDescuento)
-    @JoinColumn()
-    id_codigo_descuento :CodigoDescuento;
+    @JoinColumn({name:'id_codigo_descuento'})
+    public codigoDescuento :CodigoDescuento;
 
 
-    constructor(pregunta:string,respuesta:boolean,id_codigo_descuento:CodigoDescuento){
+    constructor(pregunta:string,respuesta:boolean,codigoDescuento:CodigoDescuento){
         this.pregunta=pregunta;
         this.respuesta=respuesta;
-        this.id_codigo_descuento=id_codigo_descuento;
+        this.codigoDescuento=codigoDescuento;
     }
 
     public getIdTrivia():number{
