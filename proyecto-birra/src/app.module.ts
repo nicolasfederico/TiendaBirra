@@ -10,6 +10,8 @@ import { ProductoModule } from './producto/producto.module';
 import { DetalleFacturaModule } from './detalle-factura/detalle-factura.module';
 import { CodigoDescuento } from './codigo-descuento/codigoDescuento.entity';
 import { CodigoDescuentoModule } from './codigo-descuento/codigo-descuento.module';
+import { TriviaController } from './trivia/trivia.controller';
+import { TriviaModule } from './trivia/trivia.module';
 
 
 @Module({
@@ -17,7 +19,7 @@ import { CodigoDescuentoModule } from './codigo-descuento/codigo-descuento.modul
     rootPath: join(__dirname, '..',
     'client'),
     }),
-    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule, DetalleFacturaModule,CodigoDescuentoModule],
+    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule, DetalleFacturaModule,CodigoDescuentoModule, TriviaModule],
   controllers: [AppController],
   providers: [AppService],
 })
