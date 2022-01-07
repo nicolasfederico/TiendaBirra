@@ -1,5 +1,7 @@
+import { type } from "os";
 import { Factura } from "src/factura/factura.entity";
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { Trivia } from "src/trivia/trivia.entity";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 
 
 @Entity('codigo_descuento')
@@ -18,6 +20,7 @@ export class CodigoDescuento{
     @OneToMany(type => Factura, factura => factura.codigoDescuento)
     public factura : Factura[];
 
+    
 
     constructor(id_codigo_descuento:string,descuento:number,activo:boolean){
         this.id_codigo_descuento=id_codigo_descuento;
