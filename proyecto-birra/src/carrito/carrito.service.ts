@@ -25,7 +25,7 @@ export class CarritoService {
 
     public async getCarrito(id:number):Promise<Carrito>{
         try{
-            const getCarrito : Carrito = await this.repoCarrito.findOne(id,{relations:['idUSUARIO']});
+            const getCarrito : Carrito = await this.repoCarrito.findOne(id,{relations:['usuario']});
             console.log(getCarrito);
             return getCarrito;
         }catch (error) {
