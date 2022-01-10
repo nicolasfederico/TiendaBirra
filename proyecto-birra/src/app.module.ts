@@ -13,6 +13,8 @@ import { CodigoDescuentoModule } from './codigo-descuento/codigo-descuento.modul
 import { TriviaController } from './trivia/trivia.controller';
 import { TriviaModule } from './trivia/trivia.module';
 import { CarritoModule } from './carrito/carrito.module';
+import { DetalleCarritoController } from './detalle-carrito/detalle-carrito.controller';
+import { DetalleCarritoModule } from './detalle-carrito/detalle-carrito.module';
 
 
 @Module({
@@ -20,7 +22,7 @@ import { CarritoModule } from './carrito/carrito.module';
     rootPath: join(__dirname, '..',
     'client'),
     }),
-    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule, DetalleFacturaModule,CodigoDescuentoModule, TriviaModule, CarritoModule],
+    TypeOrmModule.forRoot(),UsuarioModule,FacturaModule, ProductoModule, DetalleFacturaModule,CodigoDescuentoModule, TriviaModule, CarritoModule, DetalleCarritoModule],
   controllers: [AppController],
   providers: [AppService],
 })
