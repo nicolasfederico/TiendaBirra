@@ -61,20 +61,20 @@ export class DetalleFacturaService {
                             throw new HttpException( { error : `Error buscando el producto: ${detalleFactura.id_factura}`}, HttpStatus.NOT_FOUND);
                         }
 
-                        if(!producto.getIdProducto() && factura.getNroFactura()){
+                        
                             const detalleFacturaNueva : DetalleFactura = await this.repoDetalleFacturas.save(new DetalleFactura(
                                 producto.getIdProducto(),
                                 factura.getNroFactura(),
                                 detalleFactura.cantidad,
                             ))
                             return detalleFacturaNueva;
-                        }
-
                         
 
                         
 
-                        return null;
+                        
+
+                        
                     }  catch (error) {
                         console.log(error.message);
                         
@@ -106,6 +106,32 @@ export class DetalleFacturaService {
             
                        }
                             
+                    }
+
+
+                    public async putDetalleFactura(idFactura:number, idProducto:number,detalleFactura: DetalleFacturaDTO): Promise<DetalleFactura>{
+                        try{
+                            const detalleFacturaPut = await this.repoDetalleFacturas.findOne({where: {id_factura:`${idFactura}`, id_producto:`${idProducto}`}});
+
+                            if(!detalleFacturaPut){
+                                throw new HttpException( { error : `Error buscando la factura: ${idFactura}, ${idProducto}`}, HttpStatus.NOT_FOUND);
+
+                            }
+
+                            detalleFacturaPut.setCantidad(detalleFactura.cantidad);
+
+                            await this.repoDetalleFacturas.save(detalleFacturaPut);
+
+                            return detalleFacturaPut
+                        }catch (error) {
+                            console.log(error.message);
+                            
+                            throw new HttpException({
+                            status: HttpStatus.NOT_FOUND,
+                            error: "there is an error in the request, " + error,
+                            }, HttpStatus.NOT_FOUND);
+                
+                           }
                     }
 
                         

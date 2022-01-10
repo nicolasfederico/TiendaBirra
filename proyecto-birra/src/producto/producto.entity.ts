@@ -1,3 +1,4 @@
+import { DetalleCarrito } from "src/detalle-carrito/detalleCarrito.entity";
 import { DetalleFactura } from "src/detalle-factura/detalleFactura.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -32,6 +33,10 @@ export class Producto{
     @OneToMany(type => DetalleFactura,detalles => detalles.producto)
     
     public detalles : DetalleFactura [];
+
+
+    @OneToMany(type => DetalleCarrito, detalleCarrito => detalleCarrito.producto)
+    public detalleCarrito : DetalleCarrito[];
 
 
     constructor(nombre:string,marca:string,precio:number,alcohol:number,ibu:number,color:string,stock:number){
