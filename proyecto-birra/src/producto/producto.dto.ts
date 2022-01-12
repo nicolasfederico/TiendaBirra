@@ -6,5 +6,6 @@ export class ProductoDTO{
     readonly ibu:number;
     readonly color:string;
     readonly stock:number;
+    readonly imagen:string;
 
 }

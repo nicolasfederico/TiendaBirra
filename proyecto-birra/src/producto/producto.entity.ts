@@ -30,6 +30,9 @@ export class Producto{
     @Column()
     private stock:number;
 
+    @Column()
+    private imagen :string;
+
     @OneToMany(type => DetalleFactura,detalles => detalles.producto)
     
     public detalles : DetalleFactura [];
@@ -39,7 +42,7 @@ export class Producto{
     public detalleCarrito : DetalleCarrito[];
 
 
-    constructor(nombre:string,marca:string,precio:number,alcohol:number,ibu:number,color:string,stock:number){
+    constructor(nombre:string,marca:string,precio:number,alcohol:number,ibu:number,color:string,stock:number,imagen?:string){
         this.nombre=nombre;
         this.marca=marca;
         this.precio=precio;
@@ -47,6 +50,7 @@ export class Producto{
         this.ibu=ibu;
         this.color=color;
         this.stock=stock;
+        this.imagen = imagen
     }
 
      public getIdProducto():number{
@@ -59,5 +63,9 @@ export class Producto{
 
     public setStock(stock:number){
         this.stock=stock;
+    }
+
+    public setImagen(imagen:string){
+        this.imagen=imagen;
     }
 }

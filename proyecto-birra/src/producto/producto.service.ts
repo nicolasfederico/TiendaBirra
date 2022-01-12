@@ -42,7 +42,8 @@ export class ProductoService {
                 productodto.alcohol,
                 productodto.ibu,
                 productodto.color,
-                productodto.stock
+                productodto.stock,
+                productodto.imagen
             ));
             return postProducto;
         }catch (error) {
@@ -66,6 +67,7 @@ export class ProductoService {
 
             putProducto.setPrecio(productodto.precio),
             putProducto.setStock(productodto.stock);
+            putProducto.setImagen(productodto.imagen)
 
             await this.repoProducto.save(putProducto);
             return putProducto;
