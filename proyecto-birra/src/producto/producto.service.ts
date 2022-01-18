@@ -64,9 +64,13 @@ export class ProductoService {
             if(!putProducto){
                 throw new HttpException('La factura que desea modificar no existe', 404);
             }
-
+            putProducto.setNombre(productodto.nombre),
+            putProducto.setMarca(productodto.marca),
             putProducto.setPrecio(productodto.precio),
-            putProducto.setStock(productodto.stock);
+            putProducto.setalcohol(productodto.alcohol),
+            putProducto.setIbu(productodto.ibu),
+            putProducto.setColor(productodto.color)
+            putProducto.setStock(productodto.stock)
             putProducto.setImagen(productodto.imagen)
 
             await this.repoProducto.save(putProducto);

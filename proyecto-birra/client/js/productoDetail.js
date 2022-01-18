@@ -1,7 +1,24 @@
+
+
 let params = [];
 let postComment = []
 let container = document.getElementById('use-ajax')
 let nodoTablaDetail = document.getElementById('tablaDetalle')
+
+let btnBorrarProducto = document.querySelector("#btnBorrarProducto")
+btnBorrarProducto.addEventListener("click", borrarProducto)
+
+let btnPutProducto = document.querySelector("#btnModificarProducto")
+btnPutProducto.addEventListener("click",modificarPost)
+
+
+let nombreProducto = document.querySelector("#nombreProducto");
+let marcaProducto = document.querySelector("#marcaProducto");
+let precioProducto = document.querySelector("#precioProducto");
+let alcoholProducto = document.querySelector("#alcoholProducto");
+let ibuProducto = document.querySelector("#ibuProducto");
+let colorProducto = document.querySelector("#colorProducto");
+let stockProducto= document.querySelector("#stockProducto");
 
 
 function processParams(){
@@ -49,3 +66,58 @@ async function load(){
         container.innerHTML = "<h1>"+ err.message+"</h1>"
     }
 }
+
+
+async function borrarProducto(){
+    try{
+        let params = processParams();
+        let response = await fetch(`/producto/${params["index"]}`,{
+            "method":'DELETE',
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        });
+        if(response.ok){  
+            window.location.href="http://localhost:3000/tienda.html#"
+        }else{
+            alert( "error  en lectura del servidor");
+        }
+        
+    }catch(error){
+        alert("error  en conexion con servidor");
+  
+    }
+
+}
+
+async function modificarPost(){
+    try {
+        let producto={
+            "nombre": nombreProducto.value,
+            "marca": marcaProducto.value,
+            "precio": precioProducto.value,
+            "alcohol": alcoholProducto.value,
+            "ibu": ibuProducto.value,
+            "color": colorProducto.value,
+            "stock": stockProducto.value,
+      }
+      let response = await fetch (`/producto/${params["index"]}`,{
+              'method': 'PUT',
+              'headers': {'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(producto)
+      });
+      if (response.ok) {
+          load();
+         // actualizarPost();
+      } else{
+          alert("error");
+      }
+  } catch (error) {
+      alert("error y capturado en el catch");
+  }
+}
+
+
+
+

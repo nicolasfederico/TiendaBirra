@@ -57,6 +57,27 @@ export class Producto{
         return this.id_producto;
     }
 
+    public setNombre(nombre:string){
+        this.nombre=nombre;
+    }
+
+    public setMarca(marca:string){
+        this.marca=marca
+    }
+    
+    public setalcohol(alcohol:number){
+        this.alcohol=alcohol;
+    }
+
+    public setIbu(ibu:number){
+        this.ibu=ibu;
+    }
+
+    public setColor(color:string){
+        this.color=color;
+    }
+
+
     public setPrecio(precio:number){
         this.precio=precio;
     }
