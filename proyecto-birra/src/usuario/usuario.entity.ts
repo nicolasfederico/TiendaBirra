@@ -51,7 +51,13 @@ export default class Usuario{
         return this.idUSUARIO;
     }
 
+    public getPassword():string{
+        return this.password;
+    }
 
+    public getMail():string{
+        return this.mail;
+    }
 
     public setNombre(nombre:string):void{
         this.nombre=nombre;
