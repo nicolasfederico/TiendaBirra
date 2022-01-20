@@ -138,3 +138,37 @@ background-color: #6f564a;
     background-position:left;
     background-repeat: no-repeat;
 }
+.form-cargarProd{
+    margin: 2rem;
+}
+.titulo-cargarProd{
+    font-weight: bold;
+    color: white;
+    font-size: 3rem;
+    background-color: #6f564a;
+    width: 100%;
+    
+}
+
+.body-cargarProd{
+    background-color: #c7a15b;
+}
+
+.btn-cargarProd{
+    background-color: #6f564a;
+    color: white;
+}
+
+.btn-cargarProd:hover{
+    background-color: white;
+    color: #6f564a;
+}
+
+.box-input-cargarProd{
+    color: #6f564a;
+}
+
+.box-input-cargarProd:hover{
+    font-size: 1.5rem;
+    color: white;
+}
