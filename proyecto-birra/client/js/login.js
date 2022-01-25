@@ -1,6 +1,7 @@
 let email = document.querySelector("#emailLogin");
 let password = document.querySelector("#passwordLogin");
 let btnInicioSesion = document.querySelector("#btn-inicioSesion");
+let nombreUsuario = document.querySelector('#nombre-usuario')
 
 
 
@@ -18,7 +19,9 @@ btnInicioSesion.addEventListener("click", async ()=>{
         if(response.ok){
             usuario = await response.json();
             console.log(usuario);
-            alert('logueado con exito')
+            nombreUsuario.innerHTML(usuario.nombre)
+            // alert('logueado con exito');
+            
         }
         else{
             console.log('no funciona')
@@ -27,11 +30,18 @@ btnInicioSesion.addEventListener("click", async ()=>{
     catch(err){
         console.log('no funciona')
     }
+
+
+    
+    
 })
     
 
-
-
+function cargarNombre(usuario){
+    console.log('un texto')
+    nombreUsuario.innerHTML(usuario)
+    
+}
 
 
 /* async function cargarUsuario(mail,password) {
