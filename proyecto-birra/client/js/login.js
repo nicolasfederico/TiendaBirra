@@ -1,27 +1,26 @@
 let email = document.querySelector("#emailLogin");
 let password = document.querySelector("#passwordLogin");
 let btnInicioSesion = document.querySelector("#btn-inicioSesion");
-let nombreUsuario = document.querySelector('#nombre-usuario')
+
 
 
 
 let usuario;
+let datosLocales=window.localStorage;
+let usuarioEnCache;
 
-btnInicioSesion.addEventListener("click", async ()=>{
+btnInicioSesion.addEventListener("click", async function(e){
     try{ 
         email = email.value;
-        password = password.value;
-        console.log(email); 
-        console.log(password);    
+        password = password.value;  
         let response = await fetch(`usuario/login/${email}/${password}`);
         console.log(response);
         
         if(response.ok){
             usuario = await response.json();
-            console.log(usuario);
-            nombreUsuario.innerHTML(usuario.nombre)
-            // alert('logueado con exito');
-            
+            console.log(usuario.nombre);
+            datosLocales.setItem("usuario",JSON.stringify(usuario))   
+            window.location.href="http://localhost:3000"    
         }
         else{
             console.log('no funciona')
@@ -30,18 +29,9 @@ btnInicioSesion.addEventListener("click", async ()=>{
     catch(err){
         console.log('no funciona')
     }
-
-
-    
     
 })
-    
 
-function cargarNombre(usuario){
-    console.log('un texto')
-    nombreUsuario.innerHTML(usuario)
-    
-}
 
 
 /* async function cargarUsuario(mail,password) {
@@ -68,7 +58,5 @@ function cargarNombre(usuario){
 } */
 
 
-function verificarUsuario(usuario) {
 
-}
 
