@@ -53,7 +53,6 @@ async function load(){
                     <td>${producto.ibu}</td>
                     <td>${producto.color}</td>
                     <td>${producto.stock}</td>
-
                 </tr>`
                 nodoTablaDetail.innerHTML = datos
             
