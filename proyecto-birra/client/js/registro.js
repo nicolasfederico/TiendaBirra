@@ -9,7 +9,8 @@ let passwordRegistro= document.querySelector("#passwordRegistro");
 let btnRegistro = document.querySelector("#btn-registro");
 
 
-btnRegistro.addEventListener ("click", ()=> {
+
+btnRegistro.addEventListener ("click", function(e){
     let user={
         "nombre":nombreRegistro.value,
         "apellido": apellidoRegistro.value,
@@ -21,10 +22,14 @@ btnRegistro.addEventListener ("click", ()=> {
         "password": passwordRegistro.value
     };
     crear (user)
+    let idUsuario = getUsuarioId(mailRegistro.value);
+    let userCarrito = {
+        "idUSUARIO": idUsuario
+    }
+    crearCarrito(userCarrito)
 } )
 
 async function crear(user){
-    
     
     let response = await fetch("/usuario",{
         "method": "POST",
@@ -35,4 +40,29 @@ async function crear(user){
         "body": JSON.stringify(user)
     });
     let r = await response.json();
+}
+
+async function crearCarrito(userCarrito){
+    let response = await fetch("/carrito",{
+        "method": "POST",
+        "mode": 'cors',
+        "headers": {
+            'Content-Type': 'application/json',
+        },
+        "body": JSON.stringify(userCarrito)
+    });
+    let r = await response.json();
+}
+
+async function getUsuarioId(mail){
+    try {
+        let response = await fetch (`/usuario/get/${mail}`);
+        if (response.ok) {
+            let t = await response
+            return t;
+        }  
+    } 
+    catch (err) {
+        container.innerHTML = "<h1>"+ err.message+ "error</h1>";
+    }
 }

@@ -24,8 +24,7 @@ btnCargarProducto.addEventListener ("click", ()=> {
 } )
 
 async function crear(producto){
-    
-    
+        
     let response = await fetch("/producto",{
         "method": "POST",
         "mode": 'cors',
