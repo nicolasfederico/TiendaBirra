@@ -31,7 +31,7 @@ export class UsuarioService {
         }
     }
 
-    public async getUsuarioEmail(mail:string,password:string):Promise<Usuario>{
+    public async getUsuarioEmailPass(mail:string,password:string):Promise<Usuario>{
         try{
             const usuario : Usuario = await this.repoUsuario.findOne({where:[{"mail":`${mail}`}]});
             
@@ -44,6 +44,19 @@ export class UsuarioService {
             throw new HttpException( { error : `Error buscando el Usuario: ${error}`}, HttpStatus.NOT_FOUND);
         }
     }
+
+    public async getUsuarioEmail(mail:string):Promise<number>{
+        try{
+            const usuario : Usuario = await this.repoUsuario.findOne({where:[{"mail":`${mail}`}]});
+
+            console.log(usuario);
+            return usuario.getIdUsuario();
+        }catch (error) {
+            throw new HttpException( { error : `Error buscando el Usuario: ${error}`}, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 
     public async addUsuario(usuario:usuarioDTO) : Promise<Usuario>{
         try{

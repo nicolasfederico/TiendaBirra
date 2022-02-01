@@ -23,8 +23,14 @@ export class UsuarioController {
 
     
     @Get('/login/:mail/:password')
-    public async getUsuarioEmail(@Param('mail') mail:string, @Param ('password') password:string): Promise<Usuario>{
-        return await this.usuarioService.getUsuarioEmail(mail,password);
+    public async getUsuarioEmailPass(@Param('mail') mail:string, @Param ('password') password:string): Promise<Usuario>{
+        return await this.usuarioService.getUsuarioEmailPass(mail,password);
+        
+    }
+
+    @Get('/get/:mail')
+    public async getUsuarioEmail(@Param('mail') mail:string): Promise<number>{
+        return await this.usuarioService.getUsuarioEmail(mail);
         
     }
 
