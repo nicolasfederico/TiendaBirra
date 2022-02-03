@@ -26,7 +26,8 @@ async function load() {
                             IBU: ${productos[i].ibu} -
                             EBC: ${productos[i].color}</p>
                         </div>
-                        <button class="btn boton-agregar" id="btn-agregar">Agregar al carrito</button>
+                        <button class="btn boton-agregar" id="btn-agregar"><a href="/productoDetailUser.html?index=${idProducto}" id="idPost${i}">Agregar al carrito</button>
+                        <input type="number" id="input_cantidad">
                         <button class="btn boton-agregar" id="btn-modificar"><a href="/productoDetail.html?index=${idProducto}" id="idPost${i}">modificar el producto</a></button>
                     </div>
                 </div>`

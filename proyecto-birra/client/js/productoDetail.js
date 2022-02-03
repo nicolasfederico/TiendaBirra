@@ -1,7 +1,4 @@
-
-
 let params = [];
-let postComment = []
 let container = document.getElementById('use-ajax')
 let nodoTablaDetail = document.getElementById('tablaDetalle')
 
