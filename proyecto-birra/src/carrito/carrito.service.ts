@@ -35,7 +35,19 @@ export class CarritoService {
 
     public async postCarrito(carrito:CarritoDTO):Promise<Carrito>{
         try{
-            const usuarioCarrito : Usuario = await this.repoUsuario.findOne(carrito.idUSUARIO)
+            const usuarioCarrito : Usuario = await this.repoUsuario.findOne({
+                where:[{"idUSUARIO":carrito.idUSUARIO}]}
+                )
+                let contador = 5; 
+                let intervalo=setInterval(function(e){
+                if(contador===0){
+                clearInterval(intervalo);
+            }
+        else{
+            contador--;
+        }
+    },1000);
+
                 if(!usuarioCarrito){
                     throw new HttpException('No se pudo encontrar el usuario', HttpStatus.NOT_FOUND);
                 }
