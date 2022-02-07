@@ -155,17 +155,7 @@ async function crear(user){
     let r = await response.json();
 }
 
-async function crearCarrito(userCarrito){
-    let response = await fetch("/carrito",{
-        "method": "POST",
-        "mode": 'cors',
-        "headers": {
-            'Content-Type': 'application/json',
-        },
-        "body": JSON.stringify(userCarrito)
-    });
-    let r = await response.json();
-}
+
 
 async function getUsuarioId(mail){
     try {

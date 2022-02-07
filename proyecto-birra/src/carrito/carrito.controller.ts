@@ -19,6 +19,11 @@ export class CarritoController {
         return await this.carritoService.getCarrito(parseInt(id));
     }
 
+    @Get('user/:carrito')
+    public async getIfCarrito(@Param('carrito') id:string): Promise<boolean>{
+        return await this.carritoService.existeCarrito(parseInt(id));
+    }
+
 
     @Post('')
     public async postCarrito(@Body() carrito:CarritoDTO): Promise<Carrito>{

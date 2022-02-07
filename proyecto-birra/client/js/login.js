@@ -1,21 +1,22 @@
+
+
+
 let email = document.querySelector("#emailLogin");
 let password = document.querySelector("#passwordLogin");
 let btnInicioSesion = document.querySelector("#btn-inicioSesion");
 
 
-
-
 let usuario;
 let datosLocales=window.localStorage;
 let usuarioEnCache;
-
 btnInicioSesion.addEventListener("click", async function(e){
-    try{ 
+    try{
+       
         email = email.value;
         password = password.value;  
         let response = await fetch(`usuario/login/${email}/${password}`);
         console.log(response);
-        
+        debugger
         if(response.ok){
             usuario = await response.json();
             console.log(usuario.nombre);
