@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Carrito } from 'src/carrito/carrito.entity';
 import { Repository } from 'typeorm';
 import { usuarioDTO } from './usuario.dto';
 import Usuario from './usuario.entity';
@@ -7,7 +8,8 @@ import Usuario from './usuario.entity';
 @Injectable()
 export class UsuarioService {
 
-    constructor(@InjectRepository(Usuario)private readonly repoUsuario: Repository<Usuario>){
+    constructor(@InjectRepository(Usuario)private readonly repoUsuario: Repository<Usuario>,
+    @InjectRepository(Carrito)private readonly repoCarrito: Repository<Carrito>){
 
     }
 
@@ -70,6 +72,12 @@ export class UsuarioService {
                 usuario.telefono,
                 usuario.password
             ));
+            let idUsuario: Usuario = await this.repoUsuario.findOne({where:[{"mail":`${usuario.mail}`}]})
+            
+            
+            const newCarrito : Carrito = await this.repoCarrito.save (new Carrito (
+                idUsuario
+            ))
 
             return newUsuario;
         }catch (error) {
