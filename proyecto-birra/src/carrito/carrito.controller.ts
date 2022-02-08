@@ -8,7 +8,7 @@ export class CarritoController {
 
     constructor(private readonly carritoService:CarritoService){}
 
-    @Get()
+    @Get('getCarritos')
     public async getCarritos():Promise<Carrito[]>{
         return await this.carritoService.getCarritos();
     }
@@ -19,6 +19,10 @@ export class CarritoController {
         return await this.carritoService.getCarrito(parseInt(id));
     }
 
+    @Get('idCarrito/:id')
+    public async getIdCarrito(@Param('id') id:string):Promise<Carrito>{
+        return await this.carritoService.getIdCarrito(parseInt(id));
+    }
 
     @Post('')
     public async postCarrito(@Body() carrito:CarritoDTO): Promise<Carrito>{

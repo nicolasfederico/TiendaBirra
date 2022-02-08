@@ -2,8 +2,9 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Carrito } from 'src/carrito/carrito.entity';
 import { Producto } from 'src/producto/producto.entity';
-import { Repository } from 'typeorm';
-import { DetalleCarritoDTO } from './detaleCarrito.dto';
+import Usuario from 'src/usuario/usuario.entity';
+import { Like, Repository } from 'typeorm';
+import { DetalleCarritoDTO } from './detalleCarrito.dto';
 import { DetalleCarrito } from './detalleCarrito.entity';
 
 @Injectable()
@@ -11,7 +12,8 @@ export class DetalleCarritoService {
 
     constructor(@InjectRepository(DetalleCarrito)private readonly repoDetalleCarrito: Repository<DetalleCarrito>,
                 @InjectRepository(Carrito)private readonly repoCarrito : Repository<Carrito>,
-                @InjectRepository(Producto)private readonly repoProducto: Repository<Producto>){}
+                @InjectRepository(Producto)private readonly repoProducto: Repository<Producto>,
+                @InjectRepository(Usuario)private readonly repoUsuario : Repository<Usuario>){}
 
 
                 public async getAllDetalleCarrito(): Promise<DetalleCarrito[]>{
@@ -49,16 +51,32 @@ export class DetalleCarritoService {
                 }
 
 
-                public async createDetalleCarrito(detalleCarrito:DetalleCarritoDTO): Promise<DetalleCarrito>{
+                public async createDetalleCarrito(detalleCarrito:DetalleCarritoDTO, idUsuarioLS:number): Promise<DetalleCarrito>{
                     try{
                         const producto : Producto = await this.repoProducto.findOne(detalleCarrito.id_producto);
                         if(!producto){
                             throw new HttpException( { error : `Error buscando el producto: ${detalleCarrito.id_producto}`}, HttpStatus.NOT_FOUND);
                         }
 
-                        const carrito : Carrito = await this.repoCarrito.findOne(detalleCarrito.id_carrito);
+                        let usuario: Usuario = await this.repoUsuario.findOne(idUsuarioLS);
+                        if(!usuario){
+                            throw new HttpException( { error : `Error buscando el carrito: ${idUsuarioLS}`}, HttpStatus.NOT_FOUND);
+                        }
+
+                        const carrito : Carrito = await this.repoCarrito.findOne({
+                            where: {
+                                usuario:{
+                                    idUSUARIO: Like (`${usuario.getIdUsuario()}`),
+                                },
+                            },relations:['usuario'],
+                        });
+
+
+
+
+
                         if(!carrito){
-                            throw new HttpException( { error : `Error buscando el carrito: ${detalleCarrito.id_carrito}`}, HttpStatus.NOT_FOUND);
+                            throw new HttpException( { error : `Error buscando el carrito: ${usuario.getIdUsuario()}`}, HttpStatus.NOT_FOUND);
                         }
 
                         
