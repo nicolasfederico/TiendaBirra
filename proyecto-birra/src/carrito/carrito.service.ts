@@ -33,6 +33,16 @@ export class CarritoService {
         }
     }
 
+    public async getIdCarrito(id:number):Promise<Carrito>{
+        try{
+            const getIdCarrito : Carrito = await this.repoCarrito.findOne(id,{relations:['usuario']});
+            return getIdCarrito;
+        }catch (error) {
+            throw new HttpException( { error : `Error buscando el Carrito: ${error}`}, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
     public async postCarrito(carrito:CarritoDTO):Promise<Carrito>{
         try{
             const usuarioCarrito : Usuario = await this.repoUsuario.findOne({

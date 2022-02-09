@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { DetalleCarritoDTO } from './detaleCarrito.dto';
+import { DetalleCarritoDTO } from './detalleCarrito.dto';
 import { DetalleCarritoService } from './detalle-carrito.service';
 import { DetalleCarrito } from './detalleCarrito.entity';
 
@@ -25,9 +25,9 @@ export class DetalleCarritoController {
             return await this.detalleCarritoService.getDetalleCarrito(parseInt(idCarrito),parseInt(idproducto));
         }
 
-    @Post('')
-        public async createDetalleCarrito(@Body() detalleCarrito : DetalleCarritoDTO) : Promise<DetalleCarrito>{
-            return await this.detalleCarritoService.createDetalleCarrito(detalleCarrito);
+    @Post(':idUsuario')
+        public async createDetalleCarrito(@Body() detalleCarrito : DetalleCarritoDTO, @Param('idUsuario') idUsuario:string) : Promise<DetalleCarrito>{
+            return await this.detalleCarritoService.createDetalleCarrito(detalleCarrito, parseInt(idUsuario));
         }
 
     @Delete(':id/:producto')
