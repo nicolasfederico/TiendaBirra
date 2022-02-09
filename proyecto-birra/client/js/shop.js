@@ -4,7 +4,7 @@ let productos = [];
 async function load() {
     let container = document.querySelector("#app");
     container.innerHTML = "<h1> Loading...</h1>";
-    let idProducto;
+    //let idProducto;
     try {
         let response = await fetch ("/producto");
         if (response.ok) {
@@ -13,7 +13,7 @@ async function load() {
             productos = t;
             container.innerHTML = "";
             for (let i=0; i<productos.length; i++){
-                idProducto = productos[i].id_producto;
+               // idProducto = productos[i].id_producto;
                container.innerHTML+= `
                <div class="col">
                     <div class="card h-100">
