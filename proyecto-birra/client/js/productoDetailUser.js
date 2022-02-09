@@ -70,10 +70,11 @@ async function load(){
 function crearDetalleCarrito(){
     let cantidad = document.querySelector("#input_cantidad")
     let idProducto = processParams()
+    console.log(processParams())
     let cantidadValue = cantidad.value
     
     let detalle = {
-        "id_producto": idProducto,
+        "id_producto": idProducto["index"],
         "cantidad": cantidadValue
     }
 
