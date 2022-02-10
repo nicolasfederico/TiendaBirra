@@ -28,17 +28,14 @@ import { Column, Entity,JoinColumn,ManyToOne,OneToMany,PrimaryGeneratedColumn } 
         public codigoDescuento: CodigoDescuento;
         
         
-        constructor(fecha:Date,total:number,usuario:Usuario){
-            this.fecha=fecha;
+        constructor(total:number,usuario:Usuario){
             this.total=total;
             this.usuario = usuario;      
         }
         public getNroFactura():number{
             return this.nro_factura;
         }
-        public setFecha(fecha:Date):void{
-            this.fecha=fecha;
-        }
+
         public setTotal(total:number):void{
             this.total=total
         }

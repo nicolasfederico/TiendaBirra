@@ -33,7 +33,7 @@ export class FacturaService {
         try{
             let usuario : Usuario = await this.repoUsuario.findOne(facturadto.usuario)
             const postFactura : Factura = await this.repoFactura.save(new Factura(
-                facturadto.fecha,
+               
                 facturadto.total,
                 usuario
             ));
@@ -52,7 +52,6 @@ export class FacturaService {
             if(!putFactura){
                 throw new HttpException('La factura que desea modificar no existe', 404);
             }
-            putFactura.setFecha(facturadto.fecha),
             putFactura.setTotal(facturadto.total);
             await this.repoFactura.save(putFactura);
             return putFactura;
