@@ -13,7 +13,7 @@ async function load() {
             productos = t;
             container.innerHTML = "";
             for (let i=0; i<productos.length; i++){
-                idProducto = productos[i].id_producto;
+              idProducto = productos[i].id_producto;
                container.innerHTML+= `
                <div class="col">
                     <div class="card h-100">
