@@ -30,9 +30,9 @@ export class DetalleCarritoController {
             return await this.detalleCarritoService.createDetalleCarrito(detalleCarrito, parseInt(idUsuario));
         }
 
-    @Delete(':id/:producto')
-    public deleteDetalleCarrito(@Param('id') id:number,@Param('producto') idproducto:number ): Promise<DetalleCarrito> {
-        return this.detalleCarritoService.deleteDetalleCarrito(id,idproducto);
+    @Delete(':id')
+    public deleteDetalleCarrito(@Param('id') id:number): Promise<DetalleCarrito[]> {
+        return this.detalleCarritoService.deleteDetalleCarrito(id);
     }
 
     @Put(':id/:producto')
