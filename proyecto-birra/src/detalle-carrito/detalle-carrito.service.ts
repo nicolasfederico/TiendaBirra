@@ -96,15 +96,23 @@ export class DetalleCarritoService {
                     } 
                 }
 
-
-                public async deleteDetalleCarrito(id_carrito:number,id_producto:number): Promise<DetalleCarrito>{
+                public async deleteDetalleCarrito(idUsuario:number): Promise<DetalleCarrito[]>{
                     try{
-                        const detalleCarrito = await this.repoDetalleCarrito.findOne({ where:{id_producto:`${id_producto}`, id_carrito:`${id_carrito}`}})
-
+                        let usuario: Usuario = await this.repoUsuario.findOne(idUsuario);
+                        
+                        const carrito : Carrito = await this.repoCarrito.findOne({
+                            where: {
+                                usuario:{
+                                    idUSUARIO: Like (`${usuario.getIdUsuario()}`),
+                                },
+                            },relations:['usuario'],
+                        });
+                        
+                        const detalleCarrito:DetalleCarrito[] = await this.repoDetalleCarrito.find({ where:{id_carrito:`${carrito.getIdCarrito()}`}})
                         if(!detalleCarrito){
-                            throw new HttpException( { error : `Error buscando la factura: ${id_carrito}, ${id_producto}`}, HttpStatus.NOT_FOUND);
+                            throw new HttpException( { error : `Error buscando la factura: ${carrito.getIdCarrito()}`}, HttpStatus.NOT_FOUND);
                         }else{
-                            await this.repoDetalleCarrito.delete(detalleCarrito);
+                            await this.repoDetalleCarrito.remove(detalleCarrito);
                             return detalleCarrito;
                         }
                     }catch (error) {
@@ -116,10 +124,7 @@ export class DetalleCarritoService {
                         }, HttpStatus.NOT_FOUND);
             
                        }
-                            
-                    }
-
-
+                    } 
                     public async putDetalleCarrito(idCarrito:number, idProducto:number,detalleCarrito: DetalleCarritoDTO): Promise<DetalleCarrito>{
                         try{
                             const detalleCarritoPut = await this.repoDetalleCarrito.findOne({where: {id_carrito:`${idCarrito}`, id_producto:`${idProducto}`}});

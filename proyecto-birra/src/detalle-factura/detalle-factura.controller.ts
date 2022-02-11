@@ -38,6 +38,4 @@ export class DetalleFacturaController {
     public async updateDetalleFactura(@Param('id') id:number, @Param('producto') idProducto:number, @Body() detalleFactura:DetalleFacturaDTO): Promise<DetalleFactura>{
         return await this.detalleFacturaService.putDetalleFactura(id,idProducto,detalleFactura)
     }
-
-
 }

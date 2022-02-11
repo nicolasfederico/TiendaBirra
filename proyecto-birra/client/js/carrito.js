@@ -121,6 +121,7 @@ loadCarrito ();
 
 btnCrearFactura.addEventListener("click", async function(e){
 
+try {
     console.log("factura creada")
     let idUsuario = usuarioEnCache.idUSUARIO
     let response = await fetch(`/factura/${idUsuario}`,{
@@ -130,10 +131,24 @@ btnCrearFactura.addEventListener("click", async function(e){
             'Content-Type': 'application/json',
         },
     })
-})
 
 
-async function Facturar (){
-  
-      
+    await fetch(`/detalle-carrito/${idUsuario}`,{
+        "method": "DELETE",
+        "mode": 'cors',
+        "headers": {
+            'Content-Type': 'application/json',
+        },
+    })
+
+    alert ("Compra realizada con éxito")
+
+    window.location.href="http://localhost:3000/"    
+
+
+} catch (error) {
+    alert ("No se pudo realizar la compra")
 }
+
+
+})
