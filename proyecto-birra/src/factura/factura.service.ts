@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Carrito } from 'src/carrito/carrito.entity';
 import { CodigoDescuento } from 'src/codigo-descuento/codigoDescuento.entity';
 import { DetalleCarrito } from 'src/detalle-carrito/detalleCarrito.entity';
+import { DetalleFactura } from 'src/detalle-factura/detalleFactura.entity';
 import { Producto } from 'src/producto/producto.entity';
 import Usuario from 'src/usuario/usuario.entity';
 import { Like, Repository } from 'typeorm';
@@ -14,7 +15,8 @@ export class FacturaService {
                 @InjectRepository(Usuario)private readonly repoUsuario: Repository<Usuario>,
                 @InjectRepository(DetalleCarrito)private readonly repoDetalleCarrito: Repository<DetalleCarrito>,
                 @InjectRepository(Producto)private readonly repoProducto: Repository<Producto>,
-                @InjectRepository(Carrito)private readonly repoCarrito: Repository<Carrito>
+                @InjectRepository(Carrito)private readonly repoCarrito: Repository<Carrito>,
+                @InjectRepository(DetalleFactura)private readonly repoDetalleFacturas: Repository<DetalleFactura>
                 ){
     }
     public async getFacturas(): Promise<Factura[]>{
@@ -35,6 +37,7 @@ export class FacturaService {
             throw new HttpException( { error : `Error buscando las facturas: ${error}`}, HttpStatus.NOT_FOUND);
         }
     }
+    
     public async postFactura(idUsuario:number): Promise<Factura>{
         try{
             let total = 0;
@@ -47,14 +50,12 @@ export class FacturaService {
                 },relations:['usuario'],
             });              
             let usuario : Usuario = await this.repoUsuario.findOne(idUsuario)
-
             let idCarrito = carrito.getIdCarrito();
             const detallesCarrito : DetalleCarrito[] = await this.repoDetalleCarrito.find({
                 relations:['carrito','producto'],where:{ id_carrito:`${idCarrito}`}
             });
 
             console.log(detallesCarrito)
-
                 for (let i = 0; i<detallesCarrito.length; i++){
                     let cantidad = detallesCarrito[i].getCantidad();
                     let idProducto = detallesCarrito[i].getIdProducto();
@@ -63,13 +64,22 @@ export class FacturaService {
                     let subtotal = cantidad * precio;
                     total+=subtotal;
                 }
-
-
             const postFactura : Factura = await this.repoFactura.save(new Factura(
                 total,
                 usuario
-            ));
-            return postFactura;
+            ))
+            let idFactura = postFactura.getNroFactura(); 
+            for (let i = 0; i<detallesCarrito.length; i++){
+                let cantidad = detallesCarrito[i].getCantidad();
+                let idProducto = detallesCarrito[i].getIdProducto();              
+                let postDetalleFactura : DetalleFactura = await this.repoDetalleFacturas.save(new DetalleFactura(
+                    idProducto,
+                    idFactura,
+                    cantidad
+                ))
+            }
+            console.log(idFactura);
+        return postFactura;
         }catch (error) {
             console.log(error.message);
             throw new HttpException({
@@ -78,6 +88,7 @@ export class FacturaService {
             }, HttpStatus.NOT_FOUND);
          }
     }
+
     public async updateFactura(id:number,facturadto:FacturaDTO): Promise<Factura>{
         try{
             const putFactura : Factura = await this.repoFactura.findOne(id);
