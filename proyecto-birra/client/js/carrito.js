@@ -1,10 +1,12 @@
 let datosCarrito = document.querySelector('#datosCarrito')
 let detalles = [];
 let params = [];
+let usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
 
 let totalCarrito = document.querySelector('#totalCarrito')
 let error = document.querySelector('#error')
 
+let btnCrearFactura = document.querySelector('#btn-crearFactura')
 
 
 function processParams(){
@@ -26,43 +28,16 @@ async function loadCarrito(){
         let response = await fetch (`/detalle-carrito/${idCarrito}`);
         
         if (response.ok) {
-            console.log(response.ok)
-            let t = await response.json()
-            detalles = t            
-            datosCarrito.innerHTML = "";
-            totalCarrito.innerHTML = "";
-            for (let i=0; i<=detalles.length; i++) {
-                let nombre = detalles[i].producto.nombre;
-                let idProducto = detalles[i].producto.id_producto;
-                let cantidad = detalles[i].cantidad;
-                let precio = detalles[i].producto.precio;
-                let subtotal = (cantidad*precio)
-
-                datosCarrito.innerHTML+=`
-                <tr>
-                <td>${nombre}</td>
-                <td><input value="${cantidad}" id="inputCantidad-${i}" onChange="cambiarCantidad(${i},${idProducto},${idCarrito})"></input></td>
-                <td>${precio}</td>
-                <td id="subtotal">${precio*cantidad}</td>
-                </tr>`
-
-                totalCarrito.innerHTML = "";
-                totalCarrito.innerHTML +=`
-                El total es: ${total+=subtotal}`
-            }            
+            cargarDatosTabla(response);
         }
         else {
-            container.innerHTML = "<h1> Error - Failed URL!</h1>";
+            error.innerHTML = "<h1> Error - Failed URL!</h1>";
         }
     }
     catch (err) {
-        container.innerHTML = "<h1>"+ err.message+ "error</h1>";
+        error.innerHTML = "<h1>"+ err.message+ "error</h1>";
     };
 }
-
-
-
-loadCarrito ();
 
 async function cambiarCantidad(i,idProducto,idCarrito){
     let cantidad = document.querySelector(`#inputCantidad-${i}`)
@@ -97,47 +72,134 @@ async function cambiarCantidad(i,idProducto,idCarrito){
         let total =0;
         let params = processParams();
         let response = await fetch (`/detalle-carrito/${params["index"]}`);
-        let idCarrito = params["index"];
+        
         if (response.ok) {
-            let t = await response.json()
-            detalles = t
-            /* console.log("alcohol:"+ t[0].producto.alcohol ) */
-            
-            datosCarrito.innerHTML = "";
-            totalCarrito.innerHTML = "";
-            //producto cantidad precio
-            
-
-            for (let i=0; i<=detalles.length; i++) {
-                let nombre = detalles[i].producto.nombre;
-                let idProducto = detalles[i].producto.id_producto;
-                let cantidad = detalles[i].cantidad;
-                let precio = detalles[i].producto.precio;
-                let subtotal = (cantidad*precio)
-
-                datosCarrito.innerHTML+=`
-                <tr>
-                <td>${nombre}</td>
-                <td><input value="${cantidad}" id="inputCantidad-${i}" onChange="cambiarCantidad(${i},${idProducto},${idCarrito})"></input></td>
-                <td>${precio}</td>
-                <td id="subtotal">${precio*cantidad}</td>
-                </tr>`
-
-                totalCarrito.innerHTML = "";
-                totalCarrito.innerHTML +=`
-                El total es: ${total+=subtotal}`
-            }            
+            cargarDatosTabla(response)
         }
         else
-        container.innerHTML = "<h1> Error - Failed URL!</h1>";
+        error.innerHTML = "<h1> Error - Failed URL!</h1>";
     }
     catch (err) {
-        container.innerHTML = "<h1>"+ err.message+ "error</h1>";
+        error.innerHTML = "<h1>"+ err.message+ "error</h1>";
     };
-
-    
-
-    
 
 }
 
+async function cargarDatosTabla (response){
+    let total =0;
+    let idCarrito = params["index"];
+    let t = await response.json()
+    detalles = t            
+    datosCarrito.innerHTML = "";
+    totalCarrito.innerHTML = "";
+    for (let i=0; i<detalles.length; i++) {
+        let nombre = detalles[i].producto.nombre;
+        let idProducto = detalles[i].producto.id_producto;
+        let cantidad = detalles[i].cantidad;
+        let precio = detalles[i].producto.precio;
+        let subtotal = (cantidad*precio)
+
+        datosCarrito.innerHTML+=`
+        <tr>
+        <td>${nombre}</td>
+        <td><input value="${cantidad}" id="inputCantidad-${i}" onChange="cambiarCantidad(${i},${idProducto},${idCarrito})"></input></td>
+        <td>${precio}</td>
+        <td id="subtotal">${precio*cantidad}</td>
+        </tr>`
+
+        totalCarrito.innerHTML = "";
+        totalCarrito.innerHTML +=`
+        El total es: ${total+=subtotal}`
+    }            
+}
+
+
+loadCarrito ();
+
+btnCrearFactura.addEventListener("click", crearFacturaConDetalles())
+
+async function crearFacturaConDetalles (){
+    try {
+    
+    let total =0;
+    let idCarrito = processParams()["index"];
+
+    let response = await fetch (`/detalle-carrito/${idCarrito}`);
+    console.log(response)
+    if (response.ok){
+        let detalles = await response.json()
+        for (let i=0; i<detalles.length; i++){
+            let precio = detalles[i].producto.precio;
+            let cantidad = detalles[i].cantidad;
+            let subtotal = (cantidad*precio)
+            total+=subtotal;
+        }
+        let factura = {
+            "total": total,
+            "usuario": usuarioEnCache.idUSUARIO
+        }
+
+        let responseFactura = await fetch("/factura",{
+            "method": "POST",
+            "mode": 'cors',
+            "headers": {
+                'Content-Type': 'application/json',
+            },
+            "body": JSON.stringify(factura)
+        });
+        console.log (factura);
+
+    }
+    else {
+        error.innerHTML = "<h1> Error - Failed URL!</h1>";
+    }
+}
+catch (err) {
+    error.innerHTML = "<h1>"+ err.message+ "error</h1>";
+};
+}
+
+
+
+
+
+
+
+
+
+
+
+async function crearFactura(){
+
+}
+
+
+
+/* btnRegistro.addEventListener ("click", async function(e){
+    let user={
+        "nombre":nombreRegistro.value,
+        "apellido": apellidoRegistro.value,
+        "dni":dniRegistro.value,
+        "direccion": direccionRegistro.value,
+        "mail": mailRegistro.value,
+        "admin": false,
+        "telefono": telRegistro.value,
+        "password": passwordRegistro.value
+    };
+    
+    crear (user)
+} )
+ */
+
+async function crear(user){
+    
+    let response = await fetch("/usuario",{
+        "method": "POST",
+        "mode": 'cors',
+        "headers": {
+            'Content-Type': 'application/json',
+        },
+        "body": JSON.stringify(user)
+    });
+    let r = await response.json();
+}
