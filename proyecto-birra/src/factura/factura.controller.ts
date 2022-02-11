@@ -22,9 +22,9 @@ export class FacturaController {
     }
 
 
-    @Post('')
-    public async postFactura(@Body()facturadto: FacturaDTO): Promise<Factura>{
-        return await this.facturaService.postFactura(facturadto);
+    @Post('/:id')
+    public async postFactura(@Param('id') id:number): Promise<Factura>{
+        return await this.facturaService.postFactura(id);
     }
 
     @Put(':id')

@@ -9,6 +9,7 @@ let error = document.querySelector('#error')
 let btnCrearFactura = document.querySelector('#btn-crearFactura')
 
 
+
 function processParams(){
     let paramstr = window.location.search.substr(1);
     let paramarr = paramstr.split("&");
@@ -116,90 +117,23 @@ async function cargarDatosTabla (response){
 
 loadCarrito ();
 
-btnCrearFactura.addEventListener("click", crearFacturaConDetalles())
-
-async function crearFacturaConDetalles (){
-    try {
-    
-    let total =0;
-    let idCarrito = processParams()["index"];
-
-    let response = await fetch (`/detalle-carrito/${idCarrito}`);
-    console.log(response)
-    if (response.ok){
-        let detalles = await response.json()
-        for (let i=0; i<detalles.length; i++){
-            let precio = detalles[i].producto.precio;
-            let cantidad = detalles[i].cantidad;
-            let subtotal = (cantidad*precio)
-            total+=subtotal;
-        }
-        let factura = {
-            "total": total,
-            "usuario": usuarioEnCache.idUSUARIO
-        }
-
-        let responseFactura = await fetch("/factura",{
-            "method": "POST",
-            "mode": 'cors',
-            "headers": {
-                'Content-Type': 'application/json',
-            },
-            "body": JSON.stringify(factura)
-        });
-        console.log (factura);
-
-    }
-    else {
-        error.innerHTML = "<h1> Error - Failed URL!</h1>";
-    }
-}
-catch (err) {
-    error.innerHTML = "<h1>"+ err.message+ "error</h1>";
-};
-}
 
 
+btnCrearFactura.addEventListener("click", async function(e){
 
-
-
-
-
-
-
-
-
-async function crearFactura(){
-
-}
-
-
-
-/* btnRegistro.addEventListener ("click", async function(e){
-    let user={
-        "nombre":nombreRegistro.value,
-        "apellido": apellidoRegistro.value,
-        "dni":dniRegistro.value,
-        "direccion": direccionRegistro.value,
-        "mail": mailRegistro.value,
-        "admin": false,
-        "telefono": telRegistro.value,
-        "password": passwordRegistro.value
-    };
-    
-    crear (user)
-} )
- */
-
-async function crear(user){
-    
-    let response = await fetch("/usuario",{
+    console.log("factura creada")
+    let idUsuario = usuarioEnCache.idUSUARIO
+    let response = await fetch(`/factura/${idUsuario}`,{
         "method": "POST",
         "mode": 'cors',
         "headers": {
             'Content-Type': 'application/json',
         },
-        "body": JSON.stringify(user)
-    });
-    let r = await response.json();
+    })
+})
+
+
+async function Facturar (){
+  
+      
 }
