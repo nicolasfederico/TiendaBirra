@@ -1,4 +1,7 @@
 let nav = document.querySelector('nav');
+let iconoCarrito = document.querySelector('#iconoCarrito')
+
+
 usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
 
 
@@ -30,5 +33,18 @@ let cerrarSesion = document.querySelector('#cerrar-sesion');
 cerrarSesion.addEventListener("click", function (e) {
     window.localStorage.clear()
     window.location.href="http://localhost:3000"
+
+})
+
+iconoCarrito.addEventListener("click", async function (e){
+
+
+    let response = await fetch (`/usuario/get/carrito/${usuarioEnCache.idUSUARIO}`)
+
+    if (response.ok) {
+        let t = await response.json();
+        idCarrito = t
+        window.location.href=`http://localhost:3000/carrito.html?index=${idCarrito}`
+    } 
 
 })

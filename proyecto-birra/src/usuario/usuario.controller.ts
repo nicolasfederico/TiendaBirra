@@ -34,6 +34,12 @@ export class UsuarioController {
         
     }
 
+    @Get('/get/carrito/:idUsuario')
+    public async getIdCarrito(@Param('idUsuario') idUsuario:number): Promise<number>{
+        return await this.usuarioService.getIdCarrito(idUsuario);
+        
+    }
+
     @Post('')
     public async addUsuario(@Body() usuario:usuarioDTO): Promise<Usuario>{
         return await this.usuarioService.addUsuario(usuario);

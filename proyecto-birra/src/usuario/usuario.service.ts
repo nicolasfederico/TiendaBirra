@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Carrito } from 'src/carrito/carrito.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { usuarioDTO } from './usuario.dto';
 import Usuario from './usuario.entity';
 
@@ -58,6 +58,24 @@ export class UsuarioService {
         }
     }
 
+
+    public async getIdCarrito(id:number):Promise<number>{
+        try{
+            const usuario : Usuario = await this.repoUsuario.findOne(id);
+
+            const carrito : Carrito = await this.repoCarrito.findOne({
+                where: {
+                    usuario:{
+                        idUSUARIO: Like (`${usuario.getIdUsuario()}`),
+                    },
+                },relations:['usuario'],
+            });
+            let idCarrito = carrito.getIdCarrito();
+               return idCarrito;
+        }catch (error) {
+            throw new HttpException( { error : `Error buscando el Usuario: ${error}`}, HttpStatus.NOT_FOUND);
+        }
+    }
 
 
     public async addUsuario(usuario:usuarioDTO) : Promise<Usuario>{
