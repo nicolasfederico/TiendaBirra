@@ -11,11 +11,8 @@ export class DetalleFacturaService {
 
     constructor(@InjectRepository(DetalleFactura)private readonly repoDetalleFacturas: Repository<DetalleFactura>,
                 @InjectRepository(Factura)private readonly repoFactura : Repository<Factura>,
-                @InjectRepository(Producto)private readonly repoProducto: Repository<Producto>
-                
+                @InjectRepository(Producto)private readonly repoProducto: Repository<Producto>,                
                 ){}
-
-
                  public async getAllDetalleFactura(): Promise<DetalleFactura[]>{
                     try{
                         const allDetalleFacturas : DetalleFactura[] = await this.repoDetalleFacturas.find({
@@ -48,7 +45,7 @@ export class DetalleFacturaService {
                         throw new HttpException( { error : `Error buscando los detalles de la factura: ${error}`}, HttpStatus.NOT_FOUND);
                    }
                 }
-
+         
                 public async createDetalleFactura(detalleFactura:DetalleFacturaDTO): Promise<DetalleFactura>{
                     try{
                         const producto : Producto = await this.repoProducto.findOne(detalleFactura.id_producto);
@@ -71,10 +68,6 @@ export class DetalleFacturaService {
                         
 
                         
-
-                        
-
-                        
                     }  catch (error) {
                         console.log(error.message);
                         
@@ -84,7 +77,7 @@ export class DetalleFacturaService {
                         }, HttpStatus.NOT_FOUND);
                     } 
                 }
-
+                
 
                 public async deleteDetalleFactura(nroFactura:number,codigoProducto:number): Promise<DetalleFactura>{
                     try{

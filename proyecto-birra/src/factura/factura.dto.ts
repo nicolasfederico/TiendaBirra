@@ -1,5 +1,4 @@
 export class FacturaDTO{
-    readonly total:number;
     readonly usuario:number;
 }
 

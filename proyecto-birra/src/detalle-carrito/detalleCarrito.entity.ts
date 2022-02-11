@@ -37,7 +37,11 @@ export class DetalleCarrito{
     }
 
     public getIdProducto():number{
-        return this.id_producto
+        return this.id_producto;
+    }
+
+    public getCantidad():number{
+        return this.cantidad;
     }
 
     public setCantidad(cantidad:number){

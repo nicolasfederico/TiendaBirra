@@ -57,6 +57,10 @@ export class Producto{
         return this.id_producto;
     }
 
+    public getPrecio():number{
+        return this.precio;
+    }
+
     public setNombre(nombre:string){
         this.nombre=nombre;
     }

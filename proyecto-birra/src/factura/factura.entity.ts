@@ -28,8 +28,8 @@ import { Column, Entity,JoinColumn,ManyToOne,OneToMany,PrimaryGeneratedColumn } 
         public codigoDescuento: CodigoDescuento;
         
         
-        constructor(total:number,usuario:Usuario){
-            this.total=total;
+        constructor(total:number, usuario:Usuario){
+            this.total = total;
             this.usuario = usuario;      
         }
         public getNroFactura():number{
