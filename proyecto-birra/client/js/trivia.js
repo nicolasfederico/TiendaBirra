@@ -2,40 +2,30 @@ let container = document.querySelector('#trivia-container')
 async function loadTrivia(){
     try{
         let response = await fetch(`/trivia`);
-        console.log(response);
         if(response.ok){
             let trivias = await response.json();
-            console.log(trivias);
             container.innerHTML = "";
-            let i= Math.floor((Math.random() * 5));
-            console.log(i)
+            let i= Math.floor((Math.random() * (trivias.length)));
                 container.innerHTML +=
                 `<div>
                 <p>${trivias[i].pregunta}</p>
-                <button id="trivia-verdadero" >Verdadero</button>
-                <button id="trivia-falso">Falso</button>
+                <button class="btn boton" id="trivia-verdadero" >Verdadero</button>
+                <button class="btn boton" id="trivia-falso">Falso</button>
                 </div>
                 `
                 let btnVerdadero = document.querySelector('#trivia-verdadero')
-                let btnFalso = document.querySelector('#trivia-verdadero')
-                let respuesta;
+                let btnFalso = document.querySelector('#trivia-falso')
+                let respuestaCorrecta = trivias[i].respuesta;
+                let codigoDescuento = trivias[i].codigoDescuento.id_codigo_descuento
+
                 btnVerdadero.addEventListener("click", function(e)  {
-                    respuesta = true;
-                    if(respuesta == trivias[i].respuesta){
-                        console.log(`Ganaste un descuento, el codigo es: ${trivias[i].codigoDescuento.id_codigo_descuento}` )
-                    }else{
-                        console.log('Mala suerte, perdiste')
-                    }
+                    let respuesta = true;
+                   darRespuesta(respuesta,respuestaCorrecta,codigoDescuento);
                 })
                 btnFalso.addEventListener("click", function(e){
-                    respuesta = false;
-                    if(respuesta == trivias[i].respuesta){
-                        console.log(`Ganaste un descuento, el codigo es: ${trivias[i].codigoDescuento.id_codigo_descuento}` )
-                    }else{
-                        console.log('Mala suerte, perdiste')
-                    }
+                    let respuesta = false;
+                    darRespuesta(respuesta,respuestaCorrecta,codigoDescuento);
                 })
-               
         }
         else{
             container.innerHTML="<h1>Error - Failed URL!</h1>";
@@ -48,6 +38,11 @@ async function loadTrivia(){
 
 loadTrivia()
 
-function darRespuesta(){
-
+function darRespuesta(respuesta,respuestaCorrecta,codigoDescuento){
+    if(respuesta == respuestaCorrecta){
+        alert(`Ganaste un descuento, el codigo es: ${codigoDescuento}` )
+    }else{
+        alert('Mala suerte, perdiste')
+        window.location.href="http://localhost:3000/#"
+    }
 }
