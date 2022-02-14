@@ -15,10 +15,12 @@ window.addEventListener('scroll', function(){
 });
 
 let btnTienda = document.querySelector('#btn-tienda');
+if (btnTienda) {
+    btnTienda.addEventListener ('click', function(e){
+        window.location.href="http://localhost:3000/tienda.html#"
+    })
+}
 
-btnTienda.addEventListener ('click', function(e){
-    window.location.href="http://localhost:3000/tienda.html#"
-})
 
 
 let nombreUsuario = document.querySelector('#nombre-usuario')
@@ -48,3 +50,4 @@ iconoCarrito.addEventListener("click", async function (e){
     } 
 
 })
+

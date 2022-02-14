@@ -1,6 +1,10 @@
 let params = [];
 let container = document.querySelector('#container')
 let usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
+if (!usuarioEnCache) {
+    alert ("Debe estar logueado para poder ver esta sección")
+    window.location.href="http://localhost:3000/tienda.html"  
+}
 let idUsuario = usuarioEnCache.idUSUARIO;
 
 //let agregarProducto = agregarProducto = document.querySelector("#agregarProducto")
