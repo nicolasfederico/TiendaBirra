@@ -19,20 +19,23 @@ async function loadTrivia(){
                 let btnVerdadero = document.querySelector('#trivia-verdadero')
                 let btnFalso = document.querySelector('#trivia-verdadero')
                 let respuesta;
-                btnVerdadero.addEventListener("click", function(e){
-                    console.log(respuesta)
+                btnVerdadero.addEventListener("click", function(e)  {
                     respuesta = true;
-                    console.log(respuesta)
+                    if(respuesta == trivias[i].respuesta){
+                        console.log(`Ganaste un descuento, el codigo es: ${trivias[i].codigoDescuento.id_codigo_descuento}` )
+                    }else{
+                        console.log('Mala suerte, perdiste')
+                    }
                 })
                 btnFalso.addEventListener("click", function(e){
-                 respuesta = false;
+                    respuesta = false;
+                    if(respuesta == trivias[i].respuesta){
+                        console.log(`Ganaste un descuento, el codigo es: ${trivias[i].codigoDescuento.id_codigo_descuento}` )
+                    }else{
+                        console.log('Mala suerte, perdiste')
+                    }
                 })
-                console.log(respuesta)
-                if(respuesta == trivias[i].respuesta){
-                    console.log(`Ganaste un descuento, el codigo es: ${trivias[i].codigoDescuento.id_codigo_descuento}` )
-                }else{
-                    console.log('Mala suerte, perdiste')
-                }
+               
         }
         else{
             container.innerHTML="<h1>Error - Failed URL!</h1>";
@@ -45,3 +48,6 @@ async function loadTrivia(){
 
 loadTrivia()
 
+function darRespuesta(){
+
+}
