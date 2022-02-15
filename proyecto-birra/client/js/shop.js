@@ -1,4 +1,3 @@
-
 let productos = [];
 
 async function load() {
@@ -12,6 +11,7 @@ async function load() {
             //let v = JSON.stringify(t);
             productos = t;
             container.innerHTML = "";
+            let usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
             for (let i=0; i<productos.length; i++){
               idProducto = productos[i].id_producto;
                container.innerHTML+= `
@@ -30,7 +30,19 @@ async function load() {
                         <button class="btn boton-agregar btn-shop--modificar" id="btn-modificar"><a href="/productoDetail.html?index=${idProducto}"  class="link-btn--tienda">modificar el producto</a></button>
                     </div>
                 </div>`
+
+                if(usuarioEnCache){
+                    let btnModificarTienda = document.querySelectorAll('#btn-modificar')
+                    console.log(btnModificarTienda)
+                    if(usuarioEnCache.admin == true){
+                        for(let i = 0; i < btnModificarTienda.length; i++){
+                            btnModificarTienda[i].classList.remove('btn-shop--modificar')
+                        }
+                 }
+                }
+             
             }
+            
         }
         else
             container.innerHTML = "<h1> Error - Failed URL!</h1>";
@@ -43,3 +55,6 @@ async function load() {
 
 load ();
 
+function verificarUsuario(){
+  
+}
