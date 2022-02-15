@@ -193,3 +193,13 @@ background-color: #6f564a;
     color:white;
     text-decoration:none;
 }
+
+.container-trivia{
+    margin: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-shop--modificar{
+    display :none;
+}

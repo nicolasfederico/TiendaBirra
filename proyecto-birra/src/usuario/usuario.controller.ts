@@ -20,7 +20,6 @@ export class UsuarioController {
         return await this.usuarioService.getUsuario(parseInt(id));
         
     }
-
     
     @Get('/login/:mail/:password')
     public async getUsuarioEmailPass(@Param('mail') mail:string, @Param ('password') password:string): Promise<Usuario>{

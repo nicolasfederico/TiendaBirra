@@ -1,7 +1,6 @@
 let nav = document.querySelector('nav');
 let iconoCarrito = document.querySelector('#iconoCarrito')
 
-
 usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
 
 

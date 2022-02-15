@@ -7,10 +7,12 @@ async function loadTrivia(){
             container.innerHTML = "";
             let i= Math.floor((Math.random() * (trivias.length)));
                 container.innerHTML +=
-                `<div>
-                <p>${trivias[i].pregunta}</p>
-                <button class="btn boton" id="trivia-verdadero" >Verdadero</button>
-                <button class="btn boton" id="trivia-falso">Falso</button>
+                `<div class="container-trivia">
+                    <p>${trivias[i].pregunta}</p>
+                    <div> 
+                    <button class="btn" id="trivia-verdadero" >Verdadero</button>
+                    <button class="btn" id="trivia-falso">Falso</button>
+                    </div>
                 </div>
                 `
                 let btnVerdadero = document.querySelector('#trivia-verdadero')
