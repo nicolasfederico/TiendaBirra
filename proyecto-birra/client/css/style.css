@@ -87,7 +87,7 @@ background-color: #6f564a;
 
 
 .boton-agregar{
-    background-color: #7eb636;
+    background-color: #c7a15b;
     justify-content: center;
     align-content: center;
     text-align: center;
@@ -95,6 +95,7 @@ background-color: #6f564a;
     height: 2rem;
     font-size: 1rem;
     color: white;
+    text-decoration: none;
 }
 
 .contenedor-tienda{
@@ -171,4 +172,24 @@ background-color: #6f564a;
 .box-input-cargarProd:hover{
     font-size: 1.5rem;
     color: white;
+}
+
+.navstyle{
+    background-color: #6f564a;
+}
+
+.tablecarrito{
+    margin-top: 20px;
+}
+
+.btn-shop{
+    margin-top: 2%;
+    background-color: #6f564a;
+    color: white;
+
+}
+
+.link-btn--tienda{
+    color:white;
+    text-decoration:none;
 }
