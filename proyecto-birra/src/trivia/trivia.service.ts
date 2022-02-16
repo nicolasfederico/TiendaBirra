@@ -57,7 +57,8 @@ export class TriviaService {
                 trivia.respuesta,
                 codigoDescuento
             ));
-
+            console.log(codigoDescuento)
+            console.log(newTrivia)
             return newTrivia;
         }catch (error) {
             console.log(error.message);
