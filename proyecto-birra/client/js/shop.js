@@ -26,8 +26,8 @@ async function load() {
                             IBU: ${productos[i].ibu} -
                             EBC: ${productos[i].color}</p>
                         </div>
-                        <button class="btn boton-agregar" id="btn-agregar"><a href="/productoDetailUser.html?index=${idProducto}" class="link-btn--tienda">Agregar al carrito</a></button>
-                        <button class="btn boton-agregar btn-shop--modificar" id="btn-modificar"><a href="/productoDetail.html?index=${idProducto}"  class="link-btn--tienda">modificar el producto</a></button>
+                        <button class="btn boton-agregar" id="btn-agregar"><a href="/productoDetailUser.html?index=${idProducto}" class="link-btn--tienda" style="text-decoration: none; color:white;">Agregar al carrito</a></button>
+                        <button class="btn boton-agregar ocultar-usuario" id="btn-modificar"><a href="/productoDetail.html?index=${idProducto}" style="text-decoration: none; color:white;" class="link-btn--tienda">modificar el producto</a></button>
                     </div>
                 </div>`
 
@@ -36,7 +36,7 @@ async function load() {
                     console.log(btnModificarTienda)
                     if(usuarioEnCache.admin == true){
                         for(let i = 0; i < btnModificarTienda.length; i++){
-                            btnModificarTienda[i].classList.remove('btn-shop--modificar')
+                            btnModificarTienda[i].classList.remove('ocultar-usuario')
                         }
                  }
                 }

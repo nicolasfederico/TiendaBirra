@@ -35,22 +35,18 @@ async function load(){
             
             let datos = "";
                 datos =
-                `<div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="${producto.imagen}" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
+                `<div class="card" style="width: 30rem;">
+                    <img src="${producto.imagen}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${producto.nombre}</h5>
                             <p class="card-text">${producto.precio}</p>
                             <p class="card-text"><small class="text-muted">${producto.alcohol}</small></p>
                         </div>
-                        <input type="number" id="input_cantidad">
-                        <p>Stock: ${producto.stock}</p>
-                        <button id="agregarProducto" onClick="crearDetalleCarrito()">Agregar producto</button>
-                    </div>
-                    </div>
+                        <div style="margin: 2%;">
+                        <label>Cantidad:<input type="number" id="input_cantidad"></label>
+                        <p style="margin: 2%;">Stock: ${producto.stock}</p>
+                        </div>
+                        <button class="btn boton-agregar" id="agregarProducto" onClick="crearDetalleCarrito()">Agregar producto</button>   
                 </div>`
                 container.innerHTML = datos 
 
