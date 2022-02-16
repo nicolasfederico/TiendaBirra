@@ -44,13 +44,27 @@ async function load(){
              let trivias = await response.json();
              let datos = "";
              for (let i=0; i<trivias.length; i++ ) {
+                 let idCodigoDescuento = trivias[i].codigoDescuento.id_codigo_descuento;
+                 let respuestaPregunta = trivias[i].respuesta;
+                 let estado = trivias[i].codigoDescuento.activo;
+                if (estado == true){ 
+                    estado = "Activo"}
+                    else {
+                        estado = "Inactivo"
+                }
+                if (respuestaPregunta == true){
+                     respuestaPregunta = "Verdadero"; 
+                    }else {
+                        respuestaPregunta = "Falso"
+                    }
                  datos =
                  `<tr>
                      <td>${trivias[i].pregunta}</td>
-                     <td>${trivias[i].respuesta}</td>
-                     <td>${trivias[i].codigoDescuento.id_codigo_descuento}</td>
+                     <td>${respuestaPregunta}</td>
+                     <td>${idCodigoDescuento}</td>
                      <td>${trivias[i].codigoDescuento.descuento} %</td>
-                     <td>${trivias[i].codigoDescuento.activo}</td>
+                     <td id="activo-${i}">${estado} <button id="btnCambiarEstado-${i}" onClick="cambiarEstado(${trivias[i].codigoDescuento.activo},'${idCodigoDescuento}')">Cambiar estado</button></td>
+                     
                  </tr>`
                  tablaDetalle.innerHTML += datos
              }
@@ -63,5 +77,31 @@ async function load(){
         tablaDetalle.innerHTML = "<h1>"+ err.message+"</h1>"
      }
  }
+
+
+
+async function cambiarEstado(estado,idDescuento){
+    estado = !estado;
+    try {
+        let codigoDescuento={
+            "activo": estado
+        }
+        let response = await fetch (`/codigo-descuento/${idDescuento}`,{
+              'method': 'PUT',
+              'headers': {'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(codigoDescuento)
+      });
+      if (response.ok) {
+         window.location.reload();
+      } else{
+        alert("error");
+      }
+  } catch (error) {
+      alert("error y capturado en el catch");
+  }
+
+
+}
 
 load();
