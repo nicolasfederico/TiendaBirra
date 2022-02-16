@@ -87,7 +87,7 @@ background-color: #6f564a;
 
 
 .boton-agregar{
-    background-color: #c7a15b;
+    background-color: #6f564a;
     justify-content: center;
     align-content: center;
     text-align: center;
@@ -96,7 +96,33 @@ background-color: #6f564a;
     font-size: 1rem;
     color: white;
     text-decoration: none;
+    margin: 2%;
 }
+
+.boton-agregar:hover{
+    background-color:#c7a15b ;
+    color: white;
+    text-decoration: none;
+}
+
+.boton-volver{
+    background-color: white;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    line-height: 1rem;
+    height: 2rem;
+    font-size: 1rem;
+    color: #6f564a;
+    text-decoration: none;
+    margin: 2%;
+}
+
+.boton-volver:hover{
+    font-size: 1.5rem;
+    color: white;
+}
+
 
 .contenedor-tienda{
     display: flex;
@@ -143,11 +169,14 @@ background-color: #6f564a;
     margin: 2rem;
 }
 .titulo-cargarProd{
+    text-align: center;
     font-weight: bold;
     color: white;
     font-size: 3rem;
     background-color: #6f564a;
     width: 100%;
+  
+ 
     
 }
 
@@ -200,6 +229,25 @@ background-color: #6f564a;
     justify-content: center;
 }
 
-.btn-shop--modificar{
+.ocultar-usuario{
     display :none;
 }
+
+.card_detailUser--container{
+    margin: 2%;
+}
+
+.card_detailUser--img{
+    margin: 2%;
+}
+
+.trivia-titulo{
+    font-size: 5rem;
+    color: white;
+}
+
+.container-trivia{
+    height: 100px;
+}
+
+

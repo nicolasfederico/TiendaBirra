@@ -3,7 +3,7 @@
     "host": "localhost",
     "port": 3306,
     "username": "root",
-    "password": "nicosqlsv",
+    "password": "Bolivia552",
     "database": "proyectocfl",
     "entities": [
       "dist/**/**.entity{.ts,.js}"
