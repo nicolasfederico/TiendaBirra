@@ -40,6 +40,13 @@ export class TriviaService {
 
     public async postTrivia(trivia:TriviaDTO):Promise<Trivia>{
         try{
+            const newCodigoDescuento : CodigoDescuento = await this.repoCodigoDescuento.save (new CodigoDescuento(
+                trivia.id_codigo_descuento,
+                trivia.descuento,
+                trivia.activo
+            ))
+            
+            
             const codigoDescuento : CodigoDescuento = await this.repoCodigoDescuento.findOne(trivia.id_codigo_descuento)
                 if(!codigoDescuento){
                     throw new HttpException('No se pudo encontrar el codigo de descuento', HttpStatus.NOT_FOUND);
