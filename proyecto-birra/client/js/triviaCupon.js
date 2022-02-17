@@ -63,8 +63,9 @@ async function load(){
                      <td>${respuestaPregunta}</td>
                      <td>${idCodigoDescuento}</td>
                      <td>${trivias[i].codigoDescuento.descuento} %</td>
-                     <td id="activo-${i}">${estado} <button id="btnCambiarEstado-${i}" onClick="cambiarEstado(${trivias[i].codigoDescuento.activo},'${idCodigoDescuento}')">Cambiar estado</button></td>
-                     
+                     <td id="activo-${i}">${estado}</td>
+                     <td><button class="btn btn-cargarProd" id="btnCambiarEstado-${i}" onClick="cambiarEstado(${trivias[i].codigoDescuento.activo},'${idCodigoDescuento}')">Cambiar estado</button></td> 
+                     <td><button  class="btn btn-cargarProd" id="btnDeleteTrivia-${i}" onClick="deleteTrivia('${idCodigoDescuento}',${trivias[i].id_trivia})">Borrar</button></td>
                  </tr>`
                  tablaDetalle.innerHTML += datos
              }
@@ -104,4 +105,35 @@ async function cambiarEstado(estado,idDescuento){
 
 }
 
+async function deleteTrivia(idDescuento,idTrivia){
+    try{
+        let response = await fetch(`/codigo-descuento/${idDescuento}`,{
+            "method":'DELETE',
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        });
+        let responseTrivia = await fetch(`/trivia/${idTrivia}`,{
+            "method":'DELETE',
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        });
+        window.location.reload()
+        
+    }catch(error){
+        alert("error  en conexion con servidor");
+  
+    }
+
+}
+
+let usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
+if (usuarioEnCache.admin==false) {
+    alert ("Debe ser admin para poder ver esta sección")
+    window.location.href="http://localhost:3000/"  
+}
+
+
 load();
+

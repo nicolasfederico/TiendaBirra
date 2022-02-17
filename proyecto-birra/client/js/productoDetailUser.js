@@ -101,5 +101,9 @@ async function postDetalle(detalle,idUsuario){
         },
         "body": JSON.stringify(detalle)
     });
+    if (response.ok) {
+        alert ('Producto agregado con exito')
+        window.location.href="http://localhost:3000/tienda.html#"
+    }
     let r = await response.json();
 }

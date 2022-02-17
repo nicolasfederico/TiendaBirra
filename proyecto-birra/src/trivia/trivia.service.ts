@@ -69,4 +69,24 @@ export class TriviaService {
             }, HttpStatus.NOT_FOUND);
         }
     }
+
+    public async deleteTrivia(id:number):Promise<Trivia>{
+        try{
+            const trivia : Trivia = await this.repoTrivias.findOne(id);
+
+            if(trivia){
+                await this.repoTrivias.delete(id);
+                return trivia;
+            }else{
+                throw new HttpException('el usuario no existe!', 404);
+            }
+        }
+            catch (error) {
+            console.log(error.message);
+            throw new HttpException({
+            status: HttpStatus.NOT_FOUND,
+            error: "there is an error in the request, " + error,
+            }, HttpStatus.NOT_FOUND);
+     }
+   }
 }
