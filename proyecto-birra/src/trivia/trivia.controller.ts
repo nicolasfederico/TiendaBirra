@@ -28,7 +28,7 @@ export class TriviaController {
 
     
     @Delete(':id')
-    public async deleteTrivia(@Param('id') id:string) : Promise<Trivia>{
+    public async deleteTrivia(@Param('id') id:number) : Promise<Trivia>{
         return await this.triviaService.deleteTrivia(id);
     }
 }

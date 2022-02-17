@@ -70,23 +70,13 @@ export class TriviaService {
         }
     }
 
-    public async deleteTrivia(id:string):Promise<Trivia>{
+    public async deleteTrivia(id:number):Promise<Trivia>{
         try{
-           /*  const triviaDelete = await this.repoTrivias.findOne({relations:['codigo_descuento',"trivia"], where{id_codigo_descuento:`${id}`}); */
-            
-           let codigo_descuento : CodigoDescuento = await this.repoCodigoDescuento.findOne(id)
+            const trivia : Trivia = await this.repoTrivias.findOne(id);
 
-           const triviaDelete : Trivia = await this.repoTrivias.findOne({
-            where: {
-                codigo_descuento:{
-                    id_codigo_descuento: Like (`${codigo_descuento.getIdCodigoDescuento()}`),
-                },
-            },relations:['codigo_descuento'],
-        });
-          // const triviaDelete = await this.repoTrivias.findOne({where:{id_codigo_descuento:`${id}`}});
-            if(triviaDelete.getCodigoDescuento()){
+            if(trivia){
                 await this.repoTrivias.delete(id);
-                return triviaDelete;
+                return trivia;
             }else{
                 throw new HttpException('el usuario no existe!', 404);
             }

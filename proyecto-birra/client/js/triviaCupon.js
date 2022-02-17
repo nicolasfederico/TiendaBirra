@@ -65,7 +65,7 @@ async function load(){
                      <td>${trivias[i].codigoDescuento.descuento} %</td>
                      <td id="activo-${i}">${estado} </td>
                      <td> <button id="btnCambiarEstado-${i}" onClick="cambiarEstado(${trivias[i].codigoDescuento.activo},'${idCodigoDescuento}')">Cambiar estado</button></td>
-                     <td> <button id="btnDeleteTrivia-${i}" onClick="deleteTrivia('${idCodigoDescuento}')">Borrar</button></td>
+                     <td> <button id="btnDeleteTrivia-${i}" onClick="deleteTrivia('${idCodigoDescuento}',${trivias[i].id_trivia})">Borrar</button></td>
                  </tr>`
                  tablaDetalle.innerHTML += datos
              }
@@ -105,7 +105,7 @@ async function cambiarEstado(estado,idDescuento){
 
 }
 
-async function deleteTrivia(idDescuento){
+async function deleteTrivia(idDescuento,idTrivia){
     try{
         let response = await fetch(`/codigo-descuento/${idDescuento}`,{
             "method":'DELETE',
@@ -113,17 +113,13 @@ async function deleteTrivia(idDescuento){
                 "Content-Type": "application/json"
             }
         });
-        let responseTrivia = await fetch(`/trivia/${idDescuento}`,{
+        let responseTrivia = await fetch(`/trivia/${idTrivia}`,{
             "method":'DELETE',
             "headers": {
                 "Content-Type": "application/json"
             }
         });
-        if(response.ok && responseTrivia.ok){  
-            window.location.reload();
-        }else{
-            alert( "error  en lectura del servidor");
-        }
+        window.location.reload()
         
     }catch(error){
         alert("error  en conexion con servidor");
