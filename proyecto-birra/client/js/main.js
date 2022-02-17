@@ -20,6 +20,33 @@ if (btnTienda) {
     })
 }
 
+let btnJuego = document.querySelector('#btn-juego');
+if (btnJuego) {
+    btnJuego.addEventListener ('click', function(e){
+        window.location.href="http://localhost:3000/trivia.html#"
+    })
+}
+
+let btnConseguila = document.querySelector('#btn-conseguila');
+if (btnConseguila) {
+    btnConseguila.addEventListener ('click', function(e){
+        window.location.href="http://localhost:3000/tienda.html#"
+    })
+}
+
+let linkIniciaSesion = document.querySelector('#link-iniciarSesion');
+if (linkIniciaSesion) {
+    linkIniciaSesion.addEventListener ('click', function(e){
+        window.location.href="http://localhost:3000/login.html#"
+    })
+}
+
+let linkCrearTrivia = document.querySelector('crearCuponTrivia')
+if (linkCrearTrivia) {
+    linkCrearTrivia.addEventListener ('click', function(e){
+        window.location.href="http://localhost:3000/triviaCupon.html#"
+    })
+}
 
 
 let nombreUsuario = document.querySelector('#nombre-usuario')

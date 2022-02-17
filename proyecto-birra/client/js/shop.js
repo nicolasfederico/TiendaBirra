@@ -27,7 +27,7 @@ async function load() {
                             EBC: ${productos[i].color}</p>
                         </div>
                         <button class="btn boton-agregar" id="btn-agregar"><a href="/productoDetailUser.html?index=${idProducto}" class="link-btn--tienda" style="text-decoration: none; color:white;">Agregar al carrito</a></button>
-                        <button class="btn boton-agregar ocultar-usuario" id="btn-modificar"><a href="/productoDetail.html?index=${idProducto}" style="text-decoration: none; color:white;" class="link-btn--tienda">modificar el producto</a></button>
+                        <button class="btn boton-agregar ocultar-usuario" id="btn-modificar"><a href="/productoDetail.html?index=${idProducto}" style="text-decoration: none; color:white;" class="link-btn--tienda">Modificar el producto</a></button>
                     </div>
                 </div>`
 
