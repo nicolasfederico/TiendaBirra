@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { TriviaDTO } from './trivia.dto';
 import { Trivia } from './trivia.entity';
 import { TriviaService } from './trivia.service';
@@ -24,5 +24,11 @@ export class TriviaController {
     @Post('')
     public async postTrivia(@Body() trivia:TriviaDTO): Promise<Trivia>{
         return await this.triviaService.postTrivia(trivia);
+    }
+
+    
+    @Delete(':id')
+    public async deleteTrivia(@Param('id') id:string) : Promise<Trivia>{
+        return await this.triviaService.deleteTrivia(id);
     }
 }

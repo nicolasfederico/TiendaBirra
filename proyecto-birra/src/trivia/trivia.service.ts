@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CodigoDescuento } from 'src/codigo-descuento/codigoDescuento.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { TriviaDTO } from './trivia.dto';
 import { Trivia } from './trivia.entity';
 
@@ -69,4 +69,35 @@ export class TriviaService {
             }, HttpStatus.NOT_FOUND);
         }
     }
+
+    public async deleteTrivia(id:string):Promise<Trivia>{
+        try{
+           /*  const triviaDelete = await this.repoTrivias.findOne({relations:['codigo_descuento',"trivia"], where{id_codigo_descuento:`${id}`}); */
+            
+           let codigo_descuento : CodigoDescuento = await this.repoCodigoDescuento.findOne(id)
+
+           const triviaDelete : Trivia = await this.repoTrivias.findOne({
+            where: {
+                codigo_descuento:{
+                    id_codigo_descuento: Like (`${codigo_descuento.getIdCodigoDescuento()}`),
+                },
+            },relations:['codigo_descuento'],
+        });
+          // const triviaDelete = await this.repoTrivias.findOne({where:{id_codigo_descuento:`${id}`}});
+            if(triviaDelete.getCodigoDescuento()){
+                await this.repoTrivias.delete(id);
+                return triviaDelete;
+            }else{
+                throw new HttpException('el usuario no existe!', 404);
+            }
+        }
+            catch (error) {
+            console.log(error.message);
+            throw new HttpException({
+            status: HttpStatus.NOT_FOUND,
+            error: "there is an error in the request, " + error,
+            }, HttpStatus.NOT_FOUND);
+     }
+   }
+
 }

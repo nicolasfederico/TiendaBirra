@@ -29,6 +29,10 @@ export class Trivia{
         return this.id_trivia;
     }
 
+    public getCodigoDescuento():CodigoDescuento{
+        return this.codigoDescuento;
+    }
+
 
     public setPregunta(pregunta:string){
         this.pregunta=pregunta;
