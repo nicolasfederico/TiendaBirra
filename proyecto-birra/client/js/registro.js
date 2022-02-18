@@ -36,6 +36,9 @@ async function crear(user){
         },
         "body": JSON.stringify(user)
     });
+    if (response.ok) {
+        window.location.href="http://localhost:3000/login.html"
+    }
     let r = await response.json();
 }
 

@@ -20,7 +20,7 @@
                     <div class="navbar-nav" >                      
                         <a class="nav-link active" aria-current="page" href="./">Home</a>
                         <a class="nav-link" href="tienda.html">Tienda</a>
-                        <a class="nav-link" href="login.html">Iniciar sesión</a>
+                        <a class="nav-link" href="login.html" id="link-iniciarSesion">Iniciar sesión</a>
                         <div class="nav-link d-flex " id="iconoCarrito" href="linkcarrito">
                             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -36,9 +36,9 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" href="#" id="nombre-usuario"></a></li>
-                                    <li><a class="dropdown-item" id="crearCuponTrivia" href="./triviaCupon.html">Crear Cupon y Trivia</a></li>
-                                    <li><a class="dropdown-item" id="" href="./cargarProducto.html">Cargar Producto</a></li>
-                                    <li><a class="dropdown-item" id="cerrar-sesion" href="#">Cerrar Sesion</a></li>
+                                    <li><a class="dropdown-item ocultar-usuario" id="crearCuponTrivia" href="./triviaCupon.html">Crear trivia</a></li>
+                                    <li><a class="dropdown-item ocultar-usuario" id="cargarProducto" href="./cargarProducto.html">Cargar producto</a></li>
+                                    <li><a class="dropdown-item ocultar-usuario" id="cerrar-sesion" href="#">Cerrar sesión</a></li>
                                 </ul>
                             </li>
                         </ul> 
@@ -79,12 +79,13 @@
           <label for="passwordRegistro" class="form-label">Password</label>
           <input type="password" class="form-control" id="passwordRegistro">
         </div>
-        <button type="submit" id="btn-registro" class="btn btn-primary boton-agregar">Crear cuenta</button>
+        <input type="button" value="Crear Cuenta" id="btn-registro" class="btn btn-primary boton-agregar">
       </form>
 
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      
       <script src="js/main.js"></script>
       <script src="./js/registro.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
