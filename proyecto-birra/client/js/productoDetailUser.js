@@ -35,19 +35,24 @@ async function load(){
             
             let datos = "";
                 datos =
-                `<div class="card" style="width: 30rem;">
-                    <img src="${producto.imagen}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">${producto.nombre}</h5>
-                            <p class="card-text">${producto.precio}</p>
-                            <p class="card-text"><small class="text-muted">${producto.alcohol}</small></p>
+                `<div class="card mt-3">
+                    <div class="row g-0 d-flex">
+                        <div class="col-4">
+                            <img class="img-fluid h-100" src="${producto.imagen}" alt="..." width="300">
                         </div>
-                        <div style="margin: 2%;">
-                        <label>Cantidad:<input type="number" id="input_cantidad"></label>
-                        <p style="margin: 2%;">Stock: ${producto.stock}</p>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color:#5f6f4a; font-weight:bold;">${producto.nombre}</h5>
+                                <p class="card-text">${producto.precio}</p>
+                                <p class="card-text"><small class="text-muted">${producto.alcohol}</small></p>
+                                <p class="card-text";">Stock: ${producto.stock}</p>
+                                <label>Cantidad:<input type="number" id="input_cantidad"></label>  
+                                <button class="btn boton-agregar" id="agregarProducto" onClick="crearDetalleCarrito()">Agregar producto</button>   
+                            </div>
                         </div>
-                        <button class="btn boton-agregar" id="agregarProducto" onClick="crearDetalleCarrito()">Agregar producto</button>   
+                    </div>
                 </div>`
+
                 container.innerHTML = datos 
 
                 

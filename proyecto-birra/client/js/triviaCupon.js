@@ -64,7 +64,7 @@ async function load(){
                      <td>${idCodigoDescuento}</td>
                      <td>${trivias[i].codigoDescuento.descuento} %</td>
                      <td id="activo-${i}">${estado}</td>
-                     <td><button class="btn btn-cargarProd" id="btnCambiarEstado-${i}" onClick="cambiarEstado(${trivias[i].codigoDescuento.activo},'${idCodigoDescuento}')">Cambiar estado</button></td> 
+                     <td><button class="btn btn-cargarProd" id="btnCambiarEstado-${i}" onClick="cambiarEstado(${trivias[i].codigoDescuento.activo},'${idCodigoDescuento}')">Cambiar</button></td> 
                      <td><button  class="btn btn-cargarProd" id="btnDeleteTrivia-${i}" onClick="deleteTrivia('${idCodigoDescuento}',${trivias[i].id_trivia})">Borrar</button></td>
                  </tr>`
                  tablaDetalle.innerHTML += datos
