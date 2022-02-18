@@ -63,6 +63,7 @@
         </thead>
         <tbody id="tablaDetalle" class="table-striped"></tbody>
     </table>
+
     <form action="" class="col-6 form-cargarProd">
         <div class="mb-3 box-input-cargarProd">
             <label for="" class="form-label">Nombre</label>
@@ -82,7 +83,7 @@
         </div>
         <div class="mb-3 box-input-cargarProd">
             <label for="" class="form-label">ibu</label>
-            <input id="ibuProducto"class="form-control" type="text">
+            <input id="ibuProducto"class="form-control" type="number">
         </div>
         <div class="mb-3 box-input-cargarProd">
             <label for="" class="form-label">color</label>
@@ -92,9 +93,14 @@
         <label for="" class="form-label">stock</label>
         <input id="stockProducto" class="form-control" type="number">
         </div>
+        <div class="mb-3 box-input-cargarProd">
+            <label for="" class="form-label">Imagen</label>
+            <input id="imagenProducto" class="form-control" type="text">
+        </div>    
+        <p id="error"></p>
         <br>
-        <button id="btnBorrarProducto" class="btn btn-cargarProd"> Borrar Producto</button>
-        <button id="btnModificarProducto" class="btn btn-cargarProd"> Modificar Producto</button>
+        <input  type="button" id="btnBorrarProducto" class="btn btn-cargarProd"> Borrar Producto 
+        <input type="button" id="btnModificarProducto" class="btn btn-cargarProd"> Modificar Producto 
     </form>
     <button class="btn boton-volver"><a href="tienda.html" style="text-decoration: none; color:#6f564a;">Volver A la tienda</a></button>
     <script src="js/productoDetail.js"></script>

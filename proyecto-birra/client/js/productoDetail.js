@@ -1,8 +1,4 @@
-
-
 let params = [];
-let postComment = []
-let container = document.getElementById('use-ajax')
 let nodoTablaDetail = document.getElementById('tablaDetalle')
 
 let btnBorrarProducto = document.querySelector("#btnBorrarProducto")
@@ -11,6 +7,7 @@ btnBorrarProducto.addEventListener("click", borrarProducto)
 let btnPutProducto = document.querySelector("#btnModificarProducto")
 btnPutProducto.addEventListener("click",modificarPost)
 
+let errorP = document.querySelector("#error")
 
 let nombreProducto = document.querySelector("#nombreProducto");
 let marcaProducto = document.querySelector("#marcaProducto");
@@ -19,6 +16,7 @@ let alcoholProducto = document.querySelector("#alcoholProducto");
 let ibuProducto = document.querySelector("#ibuProducto");
 let colorProducto = document.querySelector("#colorProducto");
 let stockProducto= document.querySelector("#stockProducto");
+let imagenProducto= document.querySelector("#imagenProducto")
 
 
 function processParams(){
@@ -33,7 +31,6 @@ function processParams(){
 
 load()
 async function load(){
-   // let container = document.querySelector("#use-ajax");
     try{
         let params = processParams();
         console.log(params);
@@ -58,11 +55,11 @@ async function load(){
             
         }
         else{
-            container.innerHTML="<h1>Error - Failed URL!</h1>";
+            nodoTablaDetail.innerHTML="<h1>Error - Failed URL!</h1>";
         }
     }
     catch(err){
-        container.innerHTML = "<h1>"+ err.message+"</h1>"
+        nodoTablaDetail.innerHTML = "<h1>"+ err.message+"</h1>"
     }
 }
 
@@ -99,21 +96,23 @@ async function modificarPost(){
             "ibu": ibuProducto.value,
             "color": colorProducto.value,
             "stock": stockProducto.value,
+            "imagen": `../img/tienda/${imagenProducto.value}`
       }
       let response = await fetch (`/producto/${params["index"]}`,{
               'method': 'PUT',
               'headers': {'Content-Type': 'application/json',
           },
-          body: JSON.stringify(producto)
+          "body": JSON.stringify(producto)
       });
       if (response.ok) {
+          console.log("ENTRE");
           load();
-         // actualizarPost();
       } else{
-          alert("error");
+          errorP.innerHTML= "error else"
       }
   } catch (error) {
-      alert("error y capturado en el catch");
+    errorP.innerHTML = "error catch"
+
   }
 }
 

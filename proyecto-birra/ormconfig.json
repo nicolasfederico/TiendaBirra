@@ -3,7 +3,7 @@
     "host": "localhost",
     "port": 3306,
     "username": "root",
-    "password": "Bolivia552",
+    "password": "kevin41123767",
     "database": "proyectocfl",
     "entities": [
       "dist/**/**.entity{.ts,.js}"
