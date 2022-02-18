@@ -1,5 +1,3 @@
-
-
 let nombreRegistro = document.querySelector("#nombreRegistro");
 let apellidoRegistro = document.querySelector("#apellidoRegistro");
 let dniRegistro = document.querySelector("#dniRegistro");

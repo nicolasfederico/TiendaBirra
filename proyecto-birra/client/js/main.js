@@ -18,6 +18,7 @@ if (btnTienda) {
     })
 }
 
+
 let btnJuego = document.querySelector('#btn-juego');
 if (btnJuego) {
     btnJuego.addEventListener ('click', function(e){
