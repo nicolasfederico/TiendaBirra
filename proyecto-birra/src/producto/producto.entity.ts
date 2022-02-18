@@ -61,6 +61,10 @@ export class Producto{
         return this.precio;
     }
 
+    public getStock():number{
+        return this.stock;
+    }
+
     public setNombre(nombre:string){
         this.nombre=nombre;
     }

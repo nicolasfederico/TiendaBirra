@@ -77,6 +77,10 @@ export class FacturaService {
                     idFactura,
                     cantidad
                 ))
+                let producto: Producto = await this.repoProducto.findOne(idProducto)
+
+                producto.setStock(producto.getStock()-cantidad);
+                await this.repoProducto.save(producto)
             }
             console.log(idFactura);
         return postFactura;

@@ -122,7 +122,6 @@ loadCarrito ();
 btnCrearFactura.addEventListener("click", async function(e){
 
 try {
-    console.log("factura creada")
     let idUsuario = usuarioEnCache.idUSUARIO
     let response = await fetch(`/factura/${idUsuario}`,{
         "method": "POST",

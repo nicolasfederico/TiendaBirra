@@ -1,7 +1,19 @@
 let nav = document.querySelector('nav');
 let iconoCarrito = document.querySelector('#iconoCarrito')
+let crearCuponTrivia = document.querySelector('#crearCuponTrivia')
+let cargarProducto = document.querySelector('#cargarProducto')
+let iniciarSesion = document.querySelector('#link-iniciarSesion')
+
+let settings = {
+    yaIngreso: false
+}
+
+datosLocales.setItem("settings",JSON.stringify(settings)) 
+
+
 
 usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
+settingsEnCache = JSON.parse(window.localStorage.getItem("settings"));
 
 window.addEventListener('scroll', function(){
     if (window.pageYOffset > 200){
@@ -51,7 +63,7 @@ if (linkCrearTrivia) {
 let nombreUsuario = document.querySelector('#nombre-usuario')
 
 if (usuarioEnCache) {
-    nombreUsuario.innerHTML =(`${usuarioEnCache.nombre}`)
+    nombreUsuario.innerHTML =(`Hola, ${usuarioEnCache.nombre}!`)
 }
 
 
@@ -75,4 +87,31 @@ iconoCarrito.addEventListener("click", async function (e){
     } 
 
 })
+
+
+if(usuarioEnCache){    
+            cerrarSesion.classList.remove('ocultar-usuario')
+            iniciarSesion.classList.add('ocultar-usuario')
+            if(usuarioEnCache.admin == true){
+                crearCuponTrivia.classList.remove('ocultar-usuario')
+                cargarProducto.classList.remove('ocultar-usuario')
+         }
+         
+} else {
+    
+}
+
+
+if (settings.yaIngreso == false) {
+    window.onload = function() {
+        let alerta = confirm('¿Tenés mas de 18 años?', 'blabla')       
+            if(!alerta){
+                 alert('Debes ser mayor de edad para ingresar')
+                 location.href ='https://google.com';
+     
+            } else {
+                settingsEnCache.yaIngreso = true;
+            }
+     }
+}
 

@@ -53,17 +53,24 @@ export class DetalleFacturaService {
                             throw new HttpException( { error : `Error buscando el producto: ${detalleFactura.id_producto}`}, HttpStatus.NOT_FOUND);
                         }
 
+
                         const factura : Factura = await this.repoFactura.findOne(detalleFactura.id_factura);
                         if(!factura){
                             throw new HttpException( { error : `Error buscando el producto: ${detalleFactura.id_factura}`}, HttpStatus.NOT_FOUND);
                         }
 
+
+                        console.log(producto.getStock(),"producto stock")
+                        console.log(detalleFactura.cantidad, "cantidad en factura")
+
+                        producto.setStock((producto.getStock())-(detalleFactura.cantidad))
                         
                             const detalleFacturaNueva : DetalleFactura = await this.repoDetalleFacturas.save(new DetalleFactura(
                                 producto.getIdProducto(),
                                 factura.getNroFactura(),
                                 detalleFactura.cantidad,
                             ))
+                            await this.repoProducto.save(producto);
                             return detalleFacturaNueva;
                         
 
@@ -106,6 +113,10 @@ export class DetalleFacturaService {
                         try{
                             const detalleFacturaPut = await this.repoDetalleFacturas.findOne({where: {id_factura:`${idFactura}`, id_producto:`${idProducto}`}});
 
+                           
+
+
+
                             if(!detalleFacturaPut){
                                 throw new HttpException( { error : `Error buscando la factura: ${idFactura}, ${idProducto}`}, HttpStatus.NOT_FOUND);
 
@@ -113,7 +124,7 @@ export class DetalleFacturaService {
 
                             detalleFacturaPut.setCantidad(detalleFactura.cantidad);
 
-                            await this.repoDetalleFacturas.save(detalleFacturaPut);
+
 
                             return detalleFacturaPut
                         }catch (error) {
