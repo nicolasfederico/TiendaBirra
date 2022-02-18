@@ -3,8 +3,6 @@ let iconoCarrito = document.querySelector('#iconoCarrito')
 
 usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
 
-
-
 window.addEventListener('scroll', function(){
     if (window.pageYOffset > 200){
         nav.classList.add('nav-scroll-color', 'shadow');

@@ -48,42 +48,47 @@
                     </div>
                 </div>
     </nav>
+   
     <div class="d-flex justify-content-center align-items-center contenedor-botones">
         <button type="button" class="btn boton" id="btn-tienda">TIENDA</button>
         <button type="button" class="btn boton" id="btn-juego" href="trivia.html">JUGÁ POR PREMIOS</button>
     </div>
-    <table class="table" style="max-width:50%; margin:2%">
-        <thead class="table-bordered">
-            <td>Pregunta</td>
-            <td>Respuesta</td>
-            <td>Codigo Descuento</td>
-            <td>Porcentaje</td>
-            <td>Activo</td>
-        </thead>
-        <tbody id="tablaDetalle" class="table-striped"></tbody>
-    </table>
-
-    <div>
-        <h4>Cargar Descuento</h4>
-    <form action="">
-        <label for="">Ingrese el codigo de descuento:<input type="text" id="input-CodigoDescuento"></label>
-        <label for="">Ingrese el descuento:<input type="number" id="input-descuento"></label>
+    <div class="row">
+        <div class="col-6" style="margin: 2%;">
+            <table class="table" style="max-width:50%; margin:2%">
+                <thead class="table-bordered">
+                    <td>Pregunta</td>
+                    <td>Respuesta</td>
+                    <td>Codigo Descuento</td>
+                    <td>Porcentaje</td>
+                    <td>Activo</td>
+                </thead>
+                <tbody id="tablaDetalle" class="table-striped"></tbody>
+            </table>
+        </div>   
+        <div class="col-4" style="margin: 3%;"> 
+            <div>
+                <h5 style="margin-top:5%" >Cargar Descuento</h5>
+                <form action="">
+                    <label class="col-12" for="" style="margin:2%">Codigo de descuento:<input type="text" id="input-CodigoDescuento"></label>
+                    <label class="col-12" for="" style="margin:2%">Descuento:<input type="number" id="input-descuento"></label>
+                </form>
+            </div>    
+            <div> 
+                <h5>Cargar Trivia</h5>
+                <form action="">
+                    <label style="margin:2%" for="">Ingrese la pregunta:<input type="text" id="input-pregunta-trivia"></label>
+                    <label style="margin:2%" for="">Ingrese la respuesta:
+                        <select id="respuestaTrivia">
+                            <option value="true">Verdadero</option>
+                            <option value="false">Falso</option>
+                        </select>
+                    </label>
+                </form>
+            </div>
+            <button class="btn btn-cargarProd"id="btn-guardar-descuentoTrivia">Guardar</button>
+        </div>
     </div>
-    </form>
-
-    <div> 
-        <h4>Cargar Trivia</h4>
-    <form action="">
-        <label for="">Ingrese la pregunta:<input type="text" id="input-pregunta-trivia"></label>
-        <label for="">Ingrese la respuesta:
-            <select id="respuestaTrivia">
-                <option value="true">Verdadero</option>
-                <option value="false">Falso</option>
-            </select></label>
-    </form>
-    <button class="btn btn-cargarProd"id="btn-guardar-descuentoTrivia">Guardar</button>
-    </div>
-    
     <script src="js/main.js"></script>
     <script src="js/triviaCupon.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
