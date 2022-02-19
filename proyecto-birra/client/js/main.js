@@ -4,16 +4,9 @@ let crearCuponTrivia = document.querySelector('#crearCuponTrivia')
 let cargarProducto = document.querySelector('#cargarProducto')
 let iniciarSesion = document.querySelector('#link-iniciarSesion')
 
-let settings = {
-    yaIngreso: false
-}
-
-datosLocales.setItem("settings",JSON.stringify(settings)) 
-
-
 
 usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
-settingsEnCache = JSON.parse(window.localStorage.getItem("settings"));
+
 
 window.addEventListener('scroll', function(){
     if (window.pageYOffset > 200){
@@ -102,16 +95,12 @@ if(usuarioEnCache){
 }
 
 
-if (settings.yaIngreso == false) {
     window.onload = function() {
         let alerta = confirm('¿Tenés mas de 18 años?', 'blabla')       
             if(!alerta){
                  alert('Debes ser mayor de edad para ingresar')
                  location.href ='https://google.com';
      
-            } else {
-                settingsEnCache.yaIngreso = true;
-            }
+            } 
      }
-}
 
