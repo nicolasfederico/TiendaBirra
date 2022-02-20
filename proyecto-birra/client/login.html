@@ -75,7 +75,7 @@
             <input type="password" class="form-control mb-2" placeholder="Ingresa tu contraseña" id="passwordLogin">
             <a href="#" id="passwordHelp" class="form-text text-muted text-decoration-none ">¿Olvidaste tu contraseña?</a>
           </div>
-          <button id="btn-inicioSesion" type="submit" class="btn boton-agregar w-100 btnLogin">Iniciar sesión</button>
+          <button id="btn-inicioSesion" type="button" class="btn boton-agregar w-100 btnLogin">Iniciar sesión</button>
         </form>
 
         <p class="fw-bold text-center text-muted">O inicia sesión con</p>
@@ -91,13 +91,46 @@
    
   </div>
 </section>
+<div class="container">  
+  <!-- Modal -->
+  <div class="modal fade" id="modalPasswordIncorrecto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Los datos ingresados ingresados son incorrectos.</h5>
+        </div>
+        <div class="modal-body">
+            Recordá que son sensibles a mayúsculas y minúsculas.
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" id="btn-ContraseñaIncorrecta" class="btn btn-secondary btn-PopUp" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="container">  
+  <!-- Modal -->
+  <div class="modal fade" id="modalMensajeBienvenida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mensajeBienvenida">Bienvenido de nuevo!</h5>
+        </div>
+        <!-- <div class="modal-body">
+            
+        </div> -->
+        <div class="modal-footer">
+          
+          <button type="button" id="btn-LoginConfirm" class="btn btn-secondary btn-PopUp" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-
-   <!--  <div class="footer">
-        <h3>Wish you where Beer</h3>
-    </div> -->
 
     <!-- Footer -->
     <footer class="footer text-center text-white">

@@ -1,64 +1,34 @@
-let email = document.querySelector("#emailLogin");
-let password = document.querySelector("#passwordLogin");
 let btnInicioSesion = document.querySelector("#btn-inicioSesion");
-
-
-
-
 let usuario;
 let datosLocales=window.localStorage;
 let usuarioEnCache;
+let btnLoginConfirm = document.querySelector("#btn-LoginConfirm")
 
 btnInicioSesion.addEventListener("click", async function(e){
     try{ 
+        let email = document.querySelector("#emailLogin");
+        let password = document.querySelector("#passwordLogin");
         email = email.value;
         password = password.value;  
-        let response = await fetch(`usuario/login/${email}/${password}`);
-        
-        console.log(response);
-        
+        let response = await fetch(`usuario/login/${email}/${password}`);        
         if(response.ok){
             usuario = await response.json();
-            console.log(usuario.nombre);
             datosLocales.setItem("usuario",JSON.stringify(usuario))   
-            usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
-            window.location.href="http://localhost:3000"    
+            usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario")); 
+            $(function() {
+                $('#modalMensajeBienvenida').modal('show');
+            });  
+            btnLoginConfirm.addEventListener("click", function (e){
+                window.location.href="http://localhost:3000" 
+            })
         }
         else{
             console.log('no funciona')
         }
     }
     catch(err){
-        console.log('no funciona')
+        $(function() {
+            $('#modalPasswordIncorrecto').modal('show');
+        });        
     }
-    
 })
-
-
-
-/* async function cargarUsuario(mail,password) {
-    try{ 
-        email = email.value;
-        password = password.value;
-        console.log(email); 
-        console.log(password);    
-        let response = await fetch(`usuario/login/${mail}/${password}`);
-        console.log(response);
-        
-        if(response.ok){
-            usuario = await response.json();
-            console.log(usuario);
-            alert('logueado con exito')
-        }
-        else{
-            console.log('no funciona')
-        }
-    }
-    catch(err){
-        console.log('no funciona')
-    }
-} */
-
-
-
-
