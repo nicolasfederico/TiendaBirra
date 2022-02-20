@@ -39,6 +39,12 @@ export class UsuarioController {
         
     }
 
+    @Get('/recuperarPass/:mail')
+    public async recuperarPassword(@Param('mail') mail:string): Promise<Usuario>{
+        return await this.usuarioService.recuperarPassword(mail);
+    }
+
+
     @Post('')
     public async addUsuario(@Body() usuario:usuarioDTO): Promise<Usuario>{
         return await this.usuarioService.addUsuario(usuario);
