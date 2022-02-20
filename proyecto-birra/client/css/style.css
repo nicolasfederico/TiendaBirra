@@ -252,3 +252,25 @@ background-color:   #3e4e49  ;
     text-decoration: none;
     color: white;
 }
+
+.btn-PopUp{
+    background-color: #a42e16;
+    margin: 2%;
+    height: 8%;
+    width: 20%;
+    color: white;
+    font-size: 1rem;
+}
+
+.btn-PopUp:hover{
+    background-color:#a42e16;;
+    margin: 2%;
+    height: 8%;
+    width: 20%;
+    color: white;
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
+}
