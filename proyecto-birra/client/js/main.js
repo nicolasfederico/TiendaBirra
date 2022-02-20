@@ -100,7 +100,8 @@ function validacionCategoriaUsuario(){
 
 
 function verificacionEdad (){
-    if (!window.sessionStorage .getItem("Edad")) {
+    if (!usuarioEnCache) {
+        if (!window.sessionStorage .getItem("Edad")) {
             $(function() {
                 $('#modalVerifacionEdad').modal('show');
         });
@@ -109,10 +110,11 @@ function verificacionEdad (){
         btnMayorEdad.addEventListener ('click', esMayor)
         btnMenorEdad.addEventListener("click", esMenor)
         function esMayor() {
-            window.sessionStorage.setItem("Edad",true)
-        }
+                window.sessionStorage.setItem("Edad",true)
+            }
         function esMenor (){
-            window.location.href = "http://google.com"
+                window.location.href = "http://google.com"
+            }
         }
     }
 }
