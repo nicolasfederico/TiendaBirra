@@ -9,8 +9,6 @@ usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
 
 
 
-
-
 window.addEventListener('scroll', function(){
     if (window.pageYOffset > 200){
         nav.classList.add('nav-scroll-color', 'shadow');
@@ -84,60 +82,42 @@ iconoCarrito.addEventListener("click", async function (e){
 
 })
 
-
-if(usuarioEnCache){    
-            cerrarSesion.classList.remove('ocultar-usuario')
-            iniciarSesion.classList.add('ocultar-usuario')
-            if(usuarioEnCache.admin == true){
-                crearCuponTrivia.classList.remove('ocultar-usuario')
-                cargarProducto.classList.remove('ocultar-usuario')
-         }
-         
-} else {
-    
-}
-
-window.localStorage.setItem("Edad",false)
-
-
-if (window.localStorage.getItem("Edad")) {
-
-    if (window.localStorage.getItem("Edad")==false) {
-    
-    $(function() {
-        $('#modalVerifacionEdad').modal('show');
-    });
-    
-    let btnMayorEdad = document.querySelector ('#btn-mayorEdad')
-    let btnMenorEdad = document.querySelector ('#btn-menorEdad')
-    
-    
-    btnMayorEdad.addEventListener ('click', esMayor)
-    
-    btnMenorEdad.addEventListener("click", esMenor)
-    
-    function esMayor() {
-        window.localStorage.setItem("Edad",true)
-    }
-    
-
-    function esMenor (){
-        window.location.href = "http://google.com"
-    }
-
-}
-    
-}
-
-
-
-  /*   window.onload = function() {
-        let alerta = confirm('¿Tenés mas de 18 años?', 'blabla')       
-            if(!alerta){
-                 alert('Debes ser mayor de edad para ingresar')
-                 location.href ='https://google.com';
-     
-            } 
+function validacionCategoriaUsuario(){
+    if(usuarioEnCache){    
+        cerrarSesion.classList.remove('ocultar-usuario')
+        iniciarSesion.classList.add('ocultar-usuario')
+        if(usuarioEnCache.admin == true){
+            crearCuponTrivia.classList.remove('ocultar-usuario')
+            cargarProducto.classList.remove('ocultar-usuario')
      }
+     
+    } else {
+ //Espacio para opciones inversas
+    }
 
- */
+}
+
+
+
+function verificacionEdad (){
+    if (!window.sessionStorage .getItem("Edad")) {
+            $(function() {
+                $('#modalVerifacionEdad').modal('show');
+        });
+        let btnMayorEdad = document.querySelector ('#btn-mayorEdad')
+        let btnMenorEdad = document.querySelector ('#btn-menorEdad')    
+        btnMayorEdad.addEventListener ('click', esMayor)
+        btnMenorEdad.addEventListener("click", esMenor)
+        function esMayor() {
+            window.sessionStorage.setItem("Edad",true)
+        }
+        function esMenor (){
+            window.location.href = "http://google.com"
+        }
+    }
+}
+
+
+
+verificacionEdad();
+validacionCategoriaUsuario();

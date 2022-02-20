@@ -21,13 +21,11 @@ btnRegistro.addEventListener ("click", async function(e){
         "telefono": telRegistro.value,
         "password": passwordRegistro.value
     };
-    
     crear (user)
 } )
 
 
 async function crear(user){
-    
     let response = await fetch("/usuario",{
         "method": "POST",
         "mode": 'cors',
