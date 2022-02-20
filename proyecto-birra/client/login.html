@@ -97,7 +97,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Los datos ingresados ingresados son incorrectos.</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Los datos ingresados son incorrectos.</h5>
         </div>
         <div class="modal-body">
             Recordá que son sensibles a mayúsculas y minúsculas.
@@ -130,6 +130,49 @@
     </div>
   </div>
 </div>
+
+<div class="container">  
+  <!-- Modal -->
+  <div class="modal fade" id="modalRecuperacionConExito" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Correo de recuperación enviado</h5>
+        </div>
+        <div class="modal-body">
+            Te hemos enviado un correo de recuperación con tu contraseña.
+            Por favor, verificá la casilla de spam.
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-secondary btn-PopUp" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">  
+  <!-- Modal -->
+  <div class="modal fade" id="modalRecuperarPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mensajeRecuperarPassword">Recuperar su contraseña</h5>
+        </div>
+        <div class="modal-body">
+            <label for="" class="form-label">Ingrese su casilla de correo: </label>
+            <input id="inputCorreoRecPass" class="form-control" type="text">
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" id="btn-RecoveryConfirm" class="btn btn-secondary btn-PopUp" data-bs-dismiss="modal">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
     <!-- Footer -->

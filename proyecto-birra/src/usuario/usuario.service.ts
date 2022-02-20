@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Carrito } from 'src/carrito/carrito.entity';
+import { transporter } from 'src/mailer/mailer';
 import { Like, Repository } from 'typeorm';
 import { usuarioDTO } from './usuario.dto';
 import Usuario from './usuario.entity';
@@ -77,6 +78,37 @@ export class UsuarioService {
         }
     }
 
+
+    public async recuperarPassword(mail:string) : Promise<Usuario> {
+        try{
+
+            const usuario : Usuario = await this.repoUsuario.findOne({where:[{"mail":`${mail}`}]});
+
+            if(!usuario){
+                throw new HttpException('El usuario que desea modificar no existe', 404);
+            }
+
+
+                let info = await transporter.sendMail({
+                    from: '"La Birra Tienda" <birratienda@gmail.com>', // sender address
+                    to: mail, // list of receivers
+                    subject: "Envio de correo de recuperación de contraseña", // Subject line
+                    html: `Su contraseña es: <b>${usuario.getPassword()}</b>`, // html body
+                  });
+
+    
+            
+
+            return usuario;
+        }catch (error) {
+            console.log(error.message);
+            
+            throw new HttpException({
+            status: HttpStatus.NOT_FOUND,
+            error: "there is an error in the request, " + error,
+            }, HttpStatus.NOT_FOUND);
+         } 
+    }
 
     public async addUsuario(usuario:usuarioDTO) : Promise<Usuario>{
         try{
