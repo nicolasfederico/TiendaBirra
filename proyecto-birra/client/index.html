@@ -9,6 +9,14 @@
     <title>Proyecto CFL</title>
 </head>
 <body>
+    
+
+
+    
+
+
+
+
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"> <img src="img/logo.svg" class="logo-navbar"></a>
@@ -46,6 +54,8 @@
                     </div>
                 </div>
     </nav>
+
+  
     <div class="d-flex justify-content-center align-items-center contenedor-botones">
         <button type="button" class="btn boton" id="btn-tienda">TIENDA</button>
         <button type="button" class="btn boton" id="btn-juego">JUGÁ POR PREMIOS</button>
@@ -61,6 +71,33 @@
 
     </div>
     
+
+
+
+<div class="container">  
+  <!-- Modal -->
+  <div class="modal fade" id="modalVerifacionEdad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">¿Sos mayor de 18 años?</h5>
+        </div>
+        <div class="modal-body">
+            Tenés que tener 18 años o más para ingresar a la página. Verificá tu edad para ingresar.
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-mayorEdad" class="btn btn-secondary boton" data-bs-dismiss="modal">Sí</button>
+          <button type="button" id="btn-menorEdad" class="btn btn-primary boton">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
     <!-- Footer -->
     <footer class="footer text-center text-white">
         <!-- Grid container -->
@@ -98,8 +135,8 @@
         </div>
           <!-- Copyright -->
       </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/animaciones.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

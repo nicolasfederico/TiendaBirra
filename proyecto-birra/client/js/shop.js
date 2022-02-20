@@ -52,9 +52,4 @@ async function load() {
     };
 }
 
-
 load ();
-
-function verificarUsuario(){
-  
-}

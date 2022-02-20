@@ -18,13 +18,11 @@ btnInicioSesion.addEventListener("click", async function(e){
         console.log(response);
         
         if(response.ok){
-          
             usuario = await response.json();
             console.log(usuario.nombre);
             datosLocales.setItem("usuario",JSON.stringify(usuario))   
             usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
             window.location.href="http://localhost:3000"    
-           
         }
         else{
             console.log('no funciona')
