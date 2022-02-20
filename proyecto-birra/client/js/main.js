@@ -8,6 +8,9 @@ let iniciarSesion = document.querySelector('#link-iniciarSesion')
 usuarioEnCache = JSON.parse(window.localStorage.getItem("usuario"));
 
 
+
+
+
 window.addEventListener('scroll', function(){
     if (window.pageYOffset > 200){
         nav.classList.add('nav-scroll-color', 'shadow');
@@ -94,8 +97,41 @@ if(usuarioEnCache){
     
 }
 
+window.localStorage.setItem("Edad",false)
 
-    window.onload = function() {
+
+if (window.localStorage.getItem("Edad")) {
+
+    if (window.localStorage.getItem("Edad")==false) {
+    
+    $(function() {
+        $('#modalVerifacionEdad').modal('show');
+    });
+    
+    let btnMayorEdad = document.querySelector ('#btn-mayorEdad')
+    let btnMenorEdad = document.querySelector ('#btn-menorEdad')
+    
+    
+    btnMayorEdad.addEventListener ('click', esMayor)
+    
+    btnMenorEdad.addEventListener("click", esMenor)
+    
+    function esMayor() {
+        window.localStorage.setItem("Edad",true)
+    }
+    
+
+    function esMenor (){
+        window.location.href = "http://google.com"
+    }
+
+}
+    
+}
+
+
+
+  /*   window.onload = function() {
         let alerta = confirm('¿Tenés mas de 18 años?', 'blabla')       
             if(!alerta){
                  alert('Debes ser mayor de edad para ingresar')
@@ -104,3 +140,4 @@ if(usuarioEnCache){
             } 
      }
 
+ */
