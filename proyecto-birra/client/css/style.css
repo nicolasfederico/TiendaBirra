@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;600&display=swap');
+
+
+body {
+    font-family: 'Spartan', sans-serif;
+}
+
+
+.logo-navbar {
+    width: 10%;
+}
+.nav-scroll-color {
+background-color:   #3e4e49  ;
+}
+
+.boton{
+    background-color: #a42e16;
+    margin: 2%;
+    height: 60px;
+    width: 20%;
+    color: white;
+    font-size: 20px;
+}
+
+.boton:hover{
+    background-color:white;
+    margin: 2%;
+    height: 60px;
+    width: 20%;
+    color:  #a42e16;
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
+}
+
+.contenedor {
+    align-items: center;
+}
+
+.contenedor-botones {
+    background-image: url('../img/04.jpg');
+    width: 100%;
+    height: 300px;    
+}
+
+.imagen-contenedor {
+    margin: 20px;
+    height: 250px;
+}
+
+.texto-contenedor {
+    margin: 40px;
+    width: 40%;
+}
+
+.btn-conseguila {
+    height: 50px;
+    align-items: center;
+    background-color: #352c21 ;
+    margin: 2%;
+    height: 60px;
+    width: 20%;
+    color: white;
+}
+
+.btn-conseguila:hover{
+    background-color:  #352c21 ;
+    margin: 2%;
+    height: 60px;
+    width: 20%;
+    color:  #ac9d92 ;
+}
+
+.footer {
+    background-color:#3e4e49  ;
+}
+
+.imagen-tienda{
+    height: 300px;
+    width: 60%;
+    align-self: center;
+
+}
+
+
+
+.boton-agregar{
+    background-color: #a42e16;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    line-height: 1rem;
+    height: 2rem;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    margin: 2%;
+}
+
+.boton-agregar:hover{
+    background-color:  #352c21;
+    text-decoration: none;
+    color:white;
+}
+
+.boton-volver{
+    background-color: white;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    line-height: 1rem;
+    height: 2rem;
+    font-size: 1rem;
+    color: #a42e16;
+    text-decoration: none;
+    margin: 2%;
+}
+
+.boton-volver:hover{
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+.contenedor-tienda{
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+
+.card {
+    border-color:#5f6f4a ;
+    border-style: solid;
+    border: 4px;
+    border-radius: 2px;
+    box-shadow: 1px 5px 15px #a2a2a2;
+}
+
+.card-text {
+    font-weight: light;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.card-precio {
+    font-weight: bold;
+    color: rgb(124, 190, 24);
+}
+
+.form-control, .btnLogin {
+    min-height: 3.125rem;
+    line-height: initial;
+}
+
+.imgLogin {
+    background-image: url("../img/login/loginImg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.imgLoginLogo {
+    background-image: url("../img/logo.svg");
+    background-size:cover;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+.form-cargarProd{
+    margin: 2rem;
+}
+.titulo-cargarProd{
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 3rem;
+    background-color: hsl(19, 20%, 36%);
+    width: 100%;
+  
+ 
+    
+}
+
+
+.btn-cargarProd{
+    background-color: #352c21;
+    color: white;
+}
+
+.btn-cargarProd:hover{
+    background-color: #a42e16;
+    color: white;
+}
+
+.box-input-cargarProd{
+    color: #a42e16 ;
+}
+
+.box-input-cargarProd:hover{
+    font-size: 1.5rem;
+    color: #a42e16 ;
+}
+
+.navstyle{
+    background-color: #6f564a;
+}
+
+.tablecarrito{
+    margin-top: 20px;
+}
+
+.btn-shop{
+    margin-top: 2%;
+    background-color: #6f564a;
+    color: white;
+
+}
+
+.link-btn--tienda{
+    color:white;
+    text-decoration:none;
+}
+
+.container-trivia{
+    margin: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+.ocultar-usuario{
+    display :none;
+}
+
+.card_detailUser--container{
+    margin: 2%;
+}
+
+.card_detailUser--img{
+    margin: 2%;
+}
+
+.trivia-titulo{
+    font-size: 5rem;
+    color: white;
+}
+
+.container-trivia{
+    height: 100px;
+}
+
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+
+.btn-PopUp{
+    background-color: #a42e16;
+    margin: 2%;
+    height: 8%;
+    width: 20%;
+    color: white;
+    font-size: 1rem;
+}
+
+.btn-PopUp:hover{
+    background-color:#a42e16;;
+    margin: 2%;
+    height: 8%;
+    width: 20%;
+    color: white;
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
+}
